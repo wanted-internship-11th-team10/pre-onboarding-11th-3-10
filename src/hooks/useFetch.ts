@@ -3,8 +3,16 @@ import { useEffect, useState } from 'react';
 type UseFetchOption<T> = {
   onSuccess?: (data: T) => void;
   onError?: (error?: unknown) => void;
+  // suspense?: boolean;
+  useErrorBoundary?: boolean;
+  depth?: any[];
 };
-export function useFetch<T>(fetcher: () => Promise<T>, { onSuccess, onError }: UseFetchOption<T> = {}) {
+
+// GYU-TODO: 시간나면 Suspense 도 구현하기
+export function useFetch<T>(
+  fetcher: () => Promise<T>,
+  { onSuccess, onError, useErrorBoundary = false, depth = [] }: UseFetchOption<T> = {},
+) {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState<T | undefined>(undefined);
   const [error, setError] = useState(null);
@@ -12,9 +20,10 @@ export function useFetch<T>(fetcher: () => Promise<T>, { onSuccess, onError }: U
   useEffect(() => {
     async function fetchData() {
       setIsLoading(true);
+      setError(null);
+
       try {
         const data = await fetcher();
-        // wait(2); // GYU-TODO: DELETE 테스트용
         setData(data);
         onSuccess && onSuccess(data);
       } catch (error: any) {
@@ -26,17 +35,12 @@ export function useFetch<T>(fetcher: () => Promise<T>, { onSuccess, onError }: U
     }
 
     fetchData();
-  }, [fetcher, onError, onSuccess]);
+  }, [...depth]);
+
+  // ErrorBoundary 용
+  if (useErrorBoundary && error) {
+    throw new Error(error);
+  }
 
   return { isLoading: isLoading || !data, data, error };
 }
-
-/*
-function wait(sec: number) {
-  const start = Date.now();
-  let now = start;
-  while (now - start < sec * 1000) {
-    now = Date.now();
-  }
-}
-*/
