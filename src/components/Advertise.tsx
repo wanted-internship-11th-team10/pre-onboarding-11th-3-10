@@ -11,7 +11,7 @@ export function Advertise() {
 }
 
 const ImgWrapper = styled.div`
-  width: 300px;
+  width: 350px;
   margin: auto;
   margin-bottom: 20px;
 

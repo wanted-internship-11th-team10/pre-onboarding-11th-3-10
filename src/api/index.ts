@@ -15,6 +15,7 @@ export interface IssueData {
 const BASE_URL = 'https://api.github.com';
 const OWNER = 'facebook';
 const REPO = 'react';
+export const PER_PAGE = 30;
 
 const client = axios.create({
   baseURL: BASE_URL,
@@ -30,6 +31,7 @@ export async function fetchGithubIssues(page = 1, owner = OWNER, repo = REPO) {
     state: 'open',
     sort: 'comments',
     page: page,
+    per_page: PER_PAGE,
   };
 
   const result: IssueData[] = await client.get(`/repos/${owner}/${repo}/issues`, { params }).then((res) => res.data);
