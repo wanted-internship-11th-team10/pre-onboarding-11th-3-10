@@ -6,8 +6,9 @@ export interface IssueData {
   number: number;
   created_at: string;
   comments: number;
-  user: {
+  user?: {
     login: string;
+    avatar_url: string;
   };
 }
 
