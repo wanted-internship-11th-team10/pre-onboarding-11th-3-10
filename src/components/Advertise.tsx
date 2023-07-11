@@ -5,7 +5,9 @@ import ad from '@/assets/ad.jpeg';
 export function Advertise() {
   return (
     <ImgWrapper>
-      <img src={ad} />
+      <a href="https://www.wanted.co.kr/" target="_blank">
+        <img src={ad} />
+      </a>
     </ImgWrapper>
   );
 }
@@ -15,7 +17,7 @@ const ImgWrapper = styled.div`
   margin: auto;
   margin-bottom: 20px;
 
-  img {
+  a > img {
     width: 100%;
     height: 80px;
   }

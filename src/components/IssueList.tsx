@@ -14,13 +14,10 @@ function isAdCell(index: number) {
 
 export function IssueList() {
   const [issues, isLoading, hasNextPage, fetchNextPage] = useFetchIssues(PER_PAGE);
-  const ref = useInfiniteScroll(
-    async (entry, observer) => {
-      observer.unobserve(entry.target);
-      if (!isLoading && hasNextPage) fetchNextPage();
-    },
-    { threshold: 0.8 },
-  );
+  const ref = useInfiniteScroll(async (entry, observer) => {
+    observer.unobserve(entry.target);
+    if (!isLoading && hasNextPage) fetchNextPage();
+  });
 
   return (
     <div>
@@ -36,12 +33,12 @@ export function IssueList() {
           />
         </Fragment>
       ))}
-      {isLoading && <Loading />}
       <Target ref={ref} />
+      {isLoading && <Loading />}
     </div>
   );
 }
 
 const Target = styled.div`
-  height: 100px;
+  height: 1px;
 `;
