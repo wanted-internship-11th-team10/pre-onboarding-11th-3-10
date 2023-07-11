@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 
 import { Layout } from '@/components/Layout';
+import { IssuePage } from './IssuePage';
 
 export const router = createBrowserRouter([
   {
@@ -11,7 +12,7 @@ export const router = createBrowserRouter([
       {
         index: true,
         path: '/',
-        element: <>ISSUE LIST</>,
+        element: <IssuePage />,
         errorElement: <div>이슈 리스트 에러 화면</div>,
       },
       {
