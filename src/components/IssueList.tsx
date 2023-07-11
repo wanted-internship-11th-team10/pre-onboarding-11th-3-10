@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import { styled } from 'styled-components';
 
-import { PER_PAGE } from '@/api';
+import { PER_PAGE } from '@/api/issue';
 import { useFetchIssues } from '@/hook/useFetchIssues';
 import { useInfiniteScroll } from '@/hook/useInfiniteScroll';
 import { Advertise } from './Advertise';

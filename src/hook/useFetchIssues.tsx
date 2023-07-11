@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { fetchGithubIssues, IssueData } from '@/api';
+import { fetchGithubIssues, IssueData } from '@/api/issue';
 
 export function useFetchIssues(
   size: number,

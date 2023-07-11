@@ -4,15 +4,15 @@ import ad from '@/assets/ad.jpeg';
 
 export function Advertise() {
   return (
-    <ImgWrapper>
+    <Container>
       <a href="https://www.wanted.co.kr/" target="_blank">
         <img src={ad} />
       </a>
-    </ImgWrapper>
+    </Container>
   );
 }
 
-const ImgWrapper = styled.div`
+const Container = styled.div`
   width: 350px;
   margin: auto;
   margin-bottom: 20px;
