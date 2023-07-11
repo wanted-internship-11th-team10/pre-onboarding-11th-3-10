@@ -23,7 +23,6 @@ export const router = createBrowserRouter([
           <IssueDetailPage />
           // </Suspense>
         ),
-        errorElement: <div>이슈 상세 화면 에러</div>,
       },
     ],
   },

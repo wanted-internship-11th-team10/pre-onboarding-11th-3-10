@@ -5,6 +5,7 @@ interface IssueItemProps {
   issue: Issue;
 }
 
+// GYU-TODO: 논의해보기! onClick 을 전송해서 routing 기능을 할지? 아니면 상위에 Link 를 전달할지!
 export function IssueItem({ issue }: IssueItemProps) {
   const { title, comments, number, user, created_at } = issue;
   return (
