@@ -14,3 +14,12 @@ export async function getIssues(sort = 'comments'): Promise<Issue[]> {
   const response = await client.get(`/facebook/react/issues?${query}`);
   return response.data;
 }
+
+/**
+ * @link https://docs.github.com/en/rest/issues/issues?apiVersion=2022-11-28#get-an-issue
+ * @param issueNumber number
+ */
+export async function getIssue(issueNumber: string): Promise<Issue> {
+  const response = await client.get(`/facebook/react/issues/${issueNumber}`);
+  return response.data;
+}

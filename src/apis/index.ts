@@ -11,3 +11,11 @@ export const client = axios.create({
     Authorization: GITHUB_TOKEN,
   },
 });
+
+export function wait(sec: number) {
+  const start = Date.now();
+  let now = start;
+  while (now - start < sec * 1000) {
+    now = Date.now();
+  }
+}
