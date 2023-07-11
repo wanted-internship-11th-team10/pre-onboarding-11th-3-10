@@ -8,10 +8,12 @@ const client = new Octokit({
   auth: import.meta.env.VITE_GITHUB_TOKEN,
 });
 
-export type IssueListDataType = Endpoints['GET /repos/{owner}/{repo}/issues']['response']['data'][0];
+export type IssueData = Endpoints['GET /repos/{owner}/{repo}/issues']['response']['data'][0];
 
-export const fetchIssueList = async (page = 1, owner = OWNER, repo = REPO): Promise<IssueListDataType[]> => {
+export const fetchGithubIssues = async (page = 1, owner = OWNER, repo = REPO): Promise<IssueData[]> => {
   const result = await client.request(`GET /repos/${owner}/${repo}/issues`, {
+    state: 'open',
+    sort: 'comments',
     page: page,
     per_page: 50,
     headers: {

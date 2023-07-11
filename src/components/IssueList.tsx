@@ -1,18 +1,19 @@
 import { useEffect, useState } from 'react';
 
-import { fetchIssueList, IssueListDataType } from '@/api';
+import { fetchGithubIssues, IssueData } from '@/api';
+import { IssueItem } from './IssueItem';
 
 export function IssueList() {
-  const [issues, setIssues] = useState<IssueListDataType[]>([]);
+  const [issues, setIssues] = useState<IssueData[]>([]);
 
   useEffect(() => {
-    fetchIssueList().then((res) => setIssues(res));
+    fetchGithubIssues().then((res) => setIssues(res));
   }, []);
 
   return (
     <div>
       {issues.map((issue) => (
-        <div>{issue.title}</div>
+        <IssueItem key={issue.id} issue={issue} />
       ))}
     </div>
   );
