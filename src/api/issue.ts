@@ -1,17 +1,13 @@
 import { client } from '.';
 
-export type Todo = {
-  id: number;
-  todo: string;
-  isCompleted: boolean;
-  userId: number;
-};
+import { IssueType } from '@/types/issue';
 
-interface Issue {
-  id: 1;
+export async function getIssue(): Promise<IssueType[]> {
+  const response = await client.get('/issues');
+  return response.data;
 }
 
-export async function getIssue(): Promise<Issue[]> {
-  const response = await client.get('/issue');
+export async function getIssueDetail(issue_number: number): Promise<IssueType[]> {
+  const response = await client.get(`/issues/${issue_number}`);
   return response.data;
 }
