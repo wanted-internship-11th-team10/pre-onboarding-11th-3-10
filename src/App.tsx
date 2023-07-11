@@ -1,12 +1,9 @@
-import { useEffect } from 'react';
+import { RouterProvider } from 'react-router-dom';
 
-import { fetchIssueList } from './api';
+import { router } from './routes';
 
 function App() {
-  useEffect(() => {
-    fetchIssueList().then((res) => console.log(res));
-  }, []);
-  return <>React Vite: </>;
+  return <RouterProvider router={router} />;
 }
 
 export default App;
