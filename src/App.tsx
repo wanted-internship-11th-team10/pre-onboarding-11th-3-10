@@ -1,8 +1,12 @@
-const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_TOKEN;
+import { useEffect } from 'react';
 
-console.log('VITE .env 접근 테스트 :: GITHUB_TOKEN : ', GITHUB_TOKEN);
+import { fetchIssueList } from './api';
+
 function App() {
-  return <>React Vite: {GITHUB_TOKEN}</>;
+  useEffect(() => {
+    fetchIssueList().then((res) => console.log(res));
+  }, []);
+  return <>React Vite: </>;
 }
 
 export default App;
