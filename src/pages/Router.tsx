@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 
 import { Layout } from '@/components/Layout';
+import { IssueDetailPage } from './IssueDetailPage.tsx';
 import { IssuePage } from './IssuePage';
 
 export const router = createBrowserRouter([
@@ -17,7 +18,11 @@ export const router = createBrowserRouter([
       },
       {
         path: ':id',
-        element: <>ISSUE 상세화면</>,
+        element: (
+          // <Suspense fallback={<div>로딩중...</div>}>
+          <IssueDetailPage />
+          // </Suspense>
+        ),
         errorElement: <div>이슈 상세 화면 에러</div>,
       },
     ],

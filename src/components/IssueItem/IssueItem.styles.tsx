@@ -4,6 +4,7 @@ export const IssueItemWrapper = styled.li`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  flex: 1;
 
   &:hover {
     cursor: pointer;
