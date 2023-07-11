@@ -1,7 +1,5 @@
 import { createContext } from 'react';
 
-type IssueContextType = {
-  //
-};
+import { IssueType } from '@/types/issue';
 
-export const IssueContext = createContext<IssueContextType | null>(null);
+export const IssueContext = createContext<IssueType[] | null>(null);
