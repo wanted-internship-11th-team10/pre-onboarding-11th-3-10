@@ -18,7 +18,7 @@ export function IssueItem({ issue }: IssueItemProps) {
             타이틀 작성자: {user?.login}, 작성일: {covertKoreaTime(created_at)}
           </S.Summary>
         </S.ItemContentsWrapper>
-        <div>코멘트: {comments}</div>
+        <S.Comment>코멘트: {comments}</S.Comment>
       </S.IssueItemContainer>
     </S.IssueItemWrapper>
   );

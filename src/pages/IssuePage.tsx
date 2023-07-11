@@ -10,7 +10,9 @@ export function IssuePage() {
   return (
     <>
       {issues?.map((issue) => (
-        <IssueItem key={issue.id} issue={issue} />
+        <li style={{ cursor: 'pointer' }}>
+          <IssueItem key={issue.id} issue={issue} />
+        </li>
       ))}
     </>
   );

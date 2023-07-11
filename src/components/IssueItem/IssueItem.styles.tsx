@@ -1,18 +1,15 @@
 import styled from '@emotion/styled';
 
-export const IssueItemWrapper = styled.li`
+export const IssueItemWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
   flex: 1;
-
-  &:hover {
-    cursor: pointer;
-  }
+  gap: 1rem;
 
   &::after {
     content: '';
-    border: 0.5px solid #21262d;
+    border: 0.5px solid #d9d9d9;
+    margin-bottom: 2rem;
   }
 `;
 
@@ -25,10 +22,20 @@ export const IssueItemContainer = styled.div`
 export const ItemContentsWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 0.5rem;
 `;
 
-export const Title = styled.h3``;
+export const Title = styled.h3`
+  margin: 0;
+  color: white;
+`;
 
 export const Summary = styled.span`
-  color: gray;
+  font-size: 12px;
+  clor: #758590;
+`;
+
+export const Comment = styled.span`
+  white-space: nowrap;
+  color: #ede6f3;
 `;
