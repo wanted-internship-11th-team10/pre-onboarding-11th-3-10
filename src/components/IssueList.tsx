@@ -7,7 +7,10 @@ export function IssueList() {
   const [issues, setIssues] = useState<IssueData[]>([]);
 
   useEffect(() => {
-    fetchGithubIssues().then((res) => setIssues(res));
+    fetchGithubIssues().then((res) => {
+      console.log(res);
+      setIssues(res);
+    });
   }, []);
 
   return (

@@ -1,25 +1,36 @@
-import { Octokit } from '@octokit/core';
-import { Endpoints } from '@octokit/types';
+import axios from 'axios';
 
+export interface IssueData {
+  id: number;
+  title: string;
+  number: number;
+  created_at: string;
+  comments: number;
+  user: {
+    login: string;
+  };
+}
+
+const BASE_URL = 'https://api.github.com';
 const OWNER = 'facebook';
 const REPO = 'react';
 
-const client = new Octokit({
-  auth: import.meta.env.VITE_GITHUB_TOKEN,
+const client = axios.create({
+  baseURL: BASE_URL,
+  headers: {
+    Accept: 'application/vnd.github+json',
+    Authorization: `Bearer ${import.meta.env.VITE_GITHUB_TOKEN}`,
+    'X-GitHub-Api-Version': '2022-11-28',
+  },
 });
 
-export type IssueData = Endpoints['GET /repos/{owner}/{repo}/issues']['response']['data'][0];
-
-export const fetchGithubIssues = async (page = 1, owner = OWNER, repo = REPO): Promise<IssueData[]> => {
-  const result = await client.request(`GET /repos/${owner}/${repo}/issues`, {
+export async function fetchGithubIssues(page = 1, owner = OWNER, repo = REPO) {
+  const params = {
     state: 'open',
     sort: 'comments',
     page: page,
-    per_page: 50,
-    headers: {
-      'X-GitHub-Api-Version': '2022-11-28',
-    },
-  });
+  };
 
-  return result.data;
-};
+  const result: IssueData[] = await client.get(`/repos/${owner}/${repo}/issues`, { params }).then((res) => res.data);
+  return result;
+}
