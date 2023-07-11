@@ -25,3 +25,8 @@ dist-ssr
 
 .eslintcache
 .idea
+
+.env
+.env.local
+.env.production
+.env.development
