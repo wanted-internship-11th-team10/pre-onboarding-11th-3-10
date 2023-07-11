@@ -1,6 +1,6 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 
-import { IssueDetail } from './components/IssueDetail';
+import { IssueContent } from './components/IssueContent';
 import { IssueList } from './components/IssueList';
 import { IssuePage } from './pages/IssuePage';
 
@@ -19,7 +19,7 @@ export const router = createBrowserRouter([
       },
       {
         path: ':id',
-        element: <IssueDetail />,
+        element: <IssueContent />,
       },
     ],
   },
