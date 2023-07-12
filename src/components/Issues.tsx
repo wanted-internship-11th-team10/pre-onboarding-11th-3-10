@@ -36,7 +36,7 @@ export function Issues({ issues }: { issues: IssueData[] }) {
 }
 
 const Box = styled.div`
-  padding: 20px;
+  padding: 30px;
   box-shadow: 0px 0px 5px 0px #bcbcbc;
   margin-bottom: 20px;
   cursor: pointer;

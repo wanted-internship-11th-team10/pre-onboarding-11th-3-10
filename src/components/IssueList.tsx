@@ -14,11 +14,11 @@ export function IssueList() {
   });
 
   return (
-    <div>
+    <>
       <Issues issues={issues} />
       <Target ref={ref} />
       {isLoading && <Loading />}
-    </div>
+    </>
   );
 }
 

@@ -42,7 +42,7 @@ const Container = styled.div`
   display: grid;
   grid-template-columns: 80px auto;
   padding: 30px;
-  margin: 20px 0;
+  margin-bottom: 20px;
   box-shadow: 0px 0px 5px 0px #bcbcbc;
 `;
 
