@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
+import IssueMarkDownViewer from '@/components/IssueMarkDownViewer';
 import { IssueContext } from '@/context/IssueContext';
 import { IssueType } from '@/types/issue';
 
@@ -28,8 +29,7 @@ function IssueDetail() {
       <div>작성일 {selectedIssue.created_at}</div>
       <div>코멘트 수 {selectedIssue.comments}</div>
       <div>작성자 프로필 이미지 {selectedIssue.user.avatar_url}</div>
-      {/* 본문은 마크다운 뷰어 사용 */}
-      <div>본문 {selectedIssue.body}</div>
+      <IssueMarkDownViewer content={selectedIssue.body} />
     </>
   );
 }
