@@ -1,8 +1,9 @@
 /** @jsxImportSource @emotion/react */
-import { Fragment, useEffect, useRef } from 'react';
+import { Fragment, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { css } from '@emotion/react';
 
+import { useInfiniteFetch } from '@/hooks/useInfiniteFetch';
 import { Issue } from '@/model';
 import { Ad, Row } from '../components';
 import { env } from '../constant';
@@ -13,26 +14,15 @@ const Home = () => {
   const navigate = useNavigate();
   const pageEnd = useRef<HTMLDivElement>(null);
 
+  useInfiniteFetch({
+    targetRef: pageEnd,
+    fetchCallback: fetchIssues,
+  });
+
   const handleRowClick = (issue: Issue) => () => {
     selectIssue(issue);
     navigate('/detail');
   };
-
-  useEffect(() => {
-    if (pageEnd.current == null) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          fetchIssues();
-        }
-      },
-      { threshold: 1 },
-    );
-    observer.observe(pageEnd.current);
-
-    return observer.disconnect;
-  }, [fetchIssues]);
 
   return (
     <Fragment>
