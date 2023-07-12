@@ -3,6 +3,7 @@ import { styled } from 'styled-components';
 
 import { IssueData } from '@/api/issue';
 import { useFetchIssue } from '@/hook/useFetchIssue';
+import style from '@/style/markdown-styles.module.css';
 import { IssueBanner } from './IssueBanner';
 
 function isIssueDataType(object: object | undefined): object is IssueData {
@@ -30,7 +31,7 @@ export function Issue() {
             />
           </Container>
           <BodyContainer>
-            <ReactMarkdown>{issue?.body ?? ''}</ReactMarkdown>
+            <ReactMarkdown className={style.reactMarkDown}>{issue?.body ?? ''}</ReactMarkdown>
           </BodyContainer>
         </>
       )}
