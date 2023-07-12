@@ -1,16 +1,20 @@
 import { Outlet } from 'react-router-dom';
 import { styled } from 'styled-components';
 
+import { IssueProvider } from '@/context/IssueProvider';
+
 export function IssuePage() {
   return (
-    <Container>
-      <Header>
-        <h1>Facebook/react</h1>
-      </Header>
-      <Inner>
-        <Outlet />
-      </Inner>
-    </Container>
+    <IssueProvider>
+      <Container>
+        <Header>
+          <h1>Facebook/react</h1>
+        </Header>
+        <Inner>
+          <Outlet />
+        </Inner>
+      </Container>
+    </IssueProvider>
   );
 }
 
