@@ -1,13 +1,8 @@
 import { client } from '.';
 
-import { IssueType } from '@/types/issue';
+import { Issue } from '@/types/issue';
 
-export async function getIssue(): Promise<IssueType[]> {
+export async function getIssue(): Promise<Issue[]> {
   const response = await client.get('/issues?sort=comments&direction=desc');
-  return response.data;
-}
-
-export async function getIssueDetail(issue_number: number): Promise<IssueType[]> {
-  const response = await client.get(`/issues/${issue_number}`);
   return response.data;
 }
