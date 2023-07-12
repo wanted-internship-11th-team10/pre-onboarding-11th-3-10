@@ -3,11 +3,11 @@ import { Fragment, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { css } from '@emotion/react';
 
+import { Ad, LoadingOrMore, Row } from '@/components';
+import { useIssues } from '@/context';
 import { useInfiniteFetch } from '@/hooks';
+import { env } from '@/shared/constant';
 import { Issue } from '@/shared/model';
-import { Ad, LoadingOrMore, Row } from '../components';
-import { useIssues } from '../context';
-import { env } from '../shared/constant';
 
 const Home = () => {
   const { issues, selectIssue, loading, fetchIssues } = useIssues();
