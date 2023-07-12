@@ -16,7 +16,7 @@ function formatDate(date: string) {
 
 export function IssueInfo({ issueNumber, title, author, created_at, comments }: IssueInfoProps) {
   return (
-    <>
+    <div>
       <Title>
         <div>#{issueNumber}</div>
         <div>{title}</div>
@@ -32,7 +32,7 @@ export function IssueInfo({ issueNumber, title, author, created_at, comments }: 
           {comments}
         </Comment>
       </Detail>
-    </>
+    </div>
   );
 }
 

@@ -1,7 +1,7 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 
 import { IssueContent } from './components/IssueContent';
-import { IssueListLayout } from './components/IssueListProvider';
+import { IssueProvider } from './components/IssueProvider';
 import { ErrorPage } from './pages/ErrorPage';
 import { IssuePage } from './pages/IssuePage';
 
@@ -16,7 +16,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: '',
-        element: <IssueListLayout />,
+        element: <IssueProvider />,
       },
       {
         path: ':number',

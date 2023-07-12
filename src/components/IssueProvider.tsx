@@ -7,7 +7,7 @@ import { useInfiniteScroll } from '@/hook/useInfiniteScroll';
 import { Loading } from './common/Loading';
 import { IssueList } from './IssueList';
 
-export function IssueListLayout() {
+export function IssueProvider() {
   const [issues, isLoading, hasNextPage, fetchNextPage] = useFetchIssues(PER_PAGE);
   const ref = useInfiniteScroll(async (entry, observer) => {
     observer.unobserve(entry.target);
