@@ -14,10 +14,13 @@ export const getIssues = async (dispatch: IssuesDispatch, count: number) => {
         'X-GitHub-Api-Version': '2022-11-28',
       },
     });
-    const filter_data = response.data.filter((item: IssueDTO) => item.state == 'open');
-    const sort_data = filter_data.sort((a: IssueType, b: IssueType) => {
-      return b.comments - a.comments;
-    });
+
+    const sort_data = response.data
+      .filter((item: IssueDTO) => item.state == 'open')
+      .sort((a: IssueDTO, b: IssueDTO) => {
+        return b.comments - a.comments;
+      });
+
     dispatch({
       type: 'GET_ISSUES_SUCCESS',
       data: sort_data.map((item: IssueDTO) => {
