@@ -21,7 +21,13 @@ export const Detail = () => {
         `}
       >
         <img src={issue.user.avatar_url} alt="avatar" width="80px" height="80px" />
-        <Row issue={issue} />
+        <div
+          css={css`
+            flex: 1;
+          `}
+        >
+          <Row issue={issue} />
+        </div>
       </div>
       <p>
         <ReactMarkdown children={issue.body} />

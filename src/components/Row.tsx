@@ -13,8 +13,8 @@ export const Row = ({ issue, onClick }: RowProps) => {
     <div
       css={css`
         display: flex;
-        gap: 2rem;
         align-items: center;
+        gap: 2rem;
         padding-bottom: 1rem;
         border-bottom: 1px solid black;
         cursor: pointer;
@@ -41,7 +41,6 @@ export const Row = ({ issue, onClick }: RowProps) => {
       </div>
       <span
         css={css`
-          flex-basis: 20%;
           font-size: 0.8rem;
         `}
       >

@@ -8,10 +8,9 @@ export const Layout = ({ children }: { children: ReactNode }) => {
   return (
     <main
       css={css`
-        width: 500px;
-        margin: 1.25rem auto 0;
+        max-width: 700px;
+        margin: 0 auto;
         padding: 1rem;
-        border: 2px solid black;
       `}
     >
       <Header org="facebook" repo="react" />

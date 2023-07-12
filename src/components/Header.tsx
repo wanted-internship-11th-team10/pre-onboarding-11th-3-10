@@ -13,7 +13,8 @@ export const Header = ({ org, repo }: HeaderProps) => {
       css={css`
         padding-bottom: 3rem;
         text-align: center;
-        font-size: 1.5rem;
+        font-size: 1.7rem;
+        font-weight: bold;
       `}
     >
       <span>{`${org} / ${repo}`}</span>
