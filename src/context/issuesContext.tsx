@@ -1,11 +1,12 @@
 /* eslint-disable react-refresh/only-export-components */
 import { createContext, Dispatch, useContext, useReducer } from 'react';
 
-type Action = { type: 'GET_ISSUES' } | { type: 'GET_ISSUES_SUCCESS'; data: IssueType[] };
+type Action = { type: 'GET_ISSUES' } | { type: 'GET_ISSUES_SUCCESS'; data: IssueType[] } | { type: 'GET_ERROR' };
 type State = {
   issues: {
     loading: boolean;
     data: IssueType[] | [];
+    error: boolean;
   };
 };
 
@@ -15,16 +16,24 @@ const INITIAL_STATE = {
   issues: {
     loading: false,
     data: [],
+    error: false,
   },
 };
 const loadingState = (current: IssueType[]) => ({
   loading: true,
   data: current,
+  error: false,
 });
 
 const success = (current: IssueType[], newData: IssueType[]) => ({
   loading: false,
   data: current?.concat(newData),
+  error: false,
+});
+const error = (current: IssueType[]) => ({
+  loading: false,
+  data: current,
+  error: true,
 });
 
 const issuesReducer = (state: State, action: Action) => {
@@ -38,6 +47,11 @@ const issuesReducer = (state: State, action: Action) => {
       return {
         ...state,
         issues: success(state.issues.data, action.data),
+      };
+    case 'GET_ERROR':
+      return {
+        ...state,
+        issues: error(state.issues.data),
       };
     default:
       throw new Error(`Unhanded action type: ${action}`);

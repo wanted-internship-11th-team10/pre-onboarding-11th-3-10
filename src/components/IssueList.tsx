@@ -5,6 +5,7 @@ import { getIssues } from '@/api/issues';
 import { useIssuesDispatch, useIssuesState } from '@/context/issuesContext';
 import { useIntersectionObserver } from '@/hook/customhook';
 import AdBanner from './AdBanner';
+import Error from './Error';
 import IssueItem from './IssueItem';
 import Loading from './Loading';
 
@@ -12,7 +13,7 @@ const IssueList = () => {
   const state = useIssuesState();
   const dispatch = useIssuesDispatch();
   const count = useRef(1);
-  const { data, loading } = state.issues;
+  const { data, loading, error } = state.issues;
   const list = data?.map((issue: IssueType, i: number) => {
     return i > 1 && i % 5 == 0 ? <AdBanner key={i} /> : <IssueItem key={i} issue={issue} />;
   });
@@ -25,7 +26,7 @@ const IssueList = () => {
   return (
     <ListBox>
       {data && list}
-      {!data && 'error'}
+      {error && <Error />}
       <div ref={setObservationTarget}></div>
       {loading && <Loading />}
     </ListBox>

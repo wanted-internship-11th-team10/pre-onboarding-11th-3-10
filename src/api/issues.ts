@@ -31,6 +31,6 @@ export const getIssues = async (dispatch: IssuesDispatch, count: number) => {
       }),
     });
   } catch (err) {
-    console.log(err);
+    dispatch({ type: 'GET_ERROR' });
   }
 };
