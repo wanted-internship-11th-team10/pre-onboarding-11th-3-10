@@ -14,7 +14,7 @@ const IssueItem = ({ issue }: IssueItemProps) => {
         <span className="user">{issue.user}</span>
       </Title>
       <Info>
-        <span>{date}</span>
+        <span className="date">{date}</span>
         <div className="comments">
           <AiOutlineComment color="#888" />
           <span>{issue.comments}</span>
@@ -59,6 +59,10 @@ const Info = styled.div`
   justify-content: space-between;
   .comments {
     display: flex;
+    font-size: 14px;
+    color: #888;
+  }
+  .date {
     font-size: 14px;
     color: #888;
   }

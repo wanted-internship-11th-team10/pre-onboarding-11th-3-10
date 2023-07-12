@@ -9,16 +9,16 @@ type Action = { type: 'GET_ISSUES' } | { type: 'GET_ISSUES_SUCCESS'; data: Issue
 type State = {
   issues: {
     loading: boolean;
-    data: IssueType[] | null;
+    data: IssueType[] | [];
   };
 };
 
 type IssuesDispatch = Dispatch<Action>;
 
-export const getIssues = async (dispatch: IssuesDispatch) => {
+export const getIssues = async (dispatch: IssuesDispatch, count: number) => {
   dispatch({ type: 'GET_ISSUES' });
   try {
-    const response = await axios.get(BACKEND_URL, {
+    const response = await axios.get(BACKEND_URL + `?per_page=10&page=${count}`, {
       headers: {
         Authorization: `Bearer ${GITHUB_TOKEN}`,
         'X-GitHub-Api-Version': '2022-11-28',
@@ -48,20 +48,17 @@ export const getIssues = async (dispatch: IssuesDispatch) => {
 const INITIAL_STATE = {
   issues: {
     loading: false,
-    data: null,
-    error: null,
+    data: [],
   },
 };
-const loadingState = {
+const loadingState = (current: IssueType[]) => ({
   loading: true,
-  data: null,
-  error: null,
-};
+  data: current,
+});
 
-const success = (data: IssueType[]) => ({
+const success = (current: IssueType[], newData: IssueType[]) => ({
   loading: false,
-  data,
-  error: null,
+  data: current?.concat(newData),
 });
 
 const issuesReducer = (state: State, action: Action) => {
@@ -69,12 +66,12 @@ const issuesReducer = (state: State, action: Action) => {
     case 'GET_ISSUES':
       return {
         ...state,
-        issues: loadingState,
+        issues: loadingState(state.issues.data),
       };
     case 'GET_ISSUES_SUCCESS':
       return {
         ...state,
-        issues: success(action.data),
+        issues: success(state.issues.data, action.data),
       };
     default:
       throw new Error(`Unhanded action type: ${action}`);
