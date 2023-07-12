@@ -7,7 +7,7 @@ import { useInView } from '@/hooks/useInview.ts';
 export function IssuePage() {
   const {
     data: issues,
-    // error,
+    error,
     isLoading,
     onNextFetch,
   } = useInfiniteFetch<Issue>(getIssues, {
@@ -19,7 +19,7 @@ export function IssuePage() {
   const { ref: inViewRef, inView } = useInView<HTMLDivElement>({
     // 방법1
     onInView: () => {
-      if (!inView || isLoading) return;
+      if (!inView || isLoading || error) return;
       onNextFetch();
     },
   });

@@ -5,12 +5,14 @@ import { getIssue } from '@/apis';
 import { IssueItem } from '@/components/IssueItem';
 import { Avatar } from '@/components/ui/Avatar';
 import { LoadingSpinner } from '@/components/ui/LoadingSpinner';
+import { useIssue } from '@/context/issue/useIssue.tsx';
 import { useFetch } from '@/hooks/useFetch.ts';
 import * as S from './IssueDetailPage.styles.tsx';
 
 export function IssueDetailPage() {
   const params = useParams<{ id: string }>();
-  const { data: issue, isLoading } = useFetch(() => getIssue(params.id!), {
+  const { owner, repository } = useIssue();
+  const { data: issue, isLoading } = useFetch(() => getIssue(owner, repository, params.id!), {
     useErrorBoundary: true,
   });
 

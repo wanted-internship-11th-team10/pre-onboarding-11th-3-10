@@ -1,13 +1,18 @@
 import { createBrowserRouter } from 'react-router-dom';
 
 import { Layout } from '@/components/Layout';
+import { IssueProvider } from '@/context/issue/IssueProvider.tsx';
 import { IssueDetailPage } from './IssueDetailPage.tsx';
 import { IssuePage } from './IssuePage';
 
 export const router = createBrowserRouter([
   {
     path: '/',
-    element: <Layout />,
+    element: (
+      <IssueProvider>
+        <Layout />
+      </IssueProvider>
+    ),
     errorElement: <>NOT FOUND PAGE - 404</>,
     children: [
       {
