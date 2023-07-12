@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 
 import { fetchGithubIssues, IssueData } from '@/api/issue';
 
-export function useFetchIssues(
-  size: number,
-): [data: IssueData[], isLoading: boolean, hasNextPage: boolean, fetchNextPage: () => void] {
+export type InfiniteQuery = [data: IssueData[], isLoading: boolean, hasNextPage: boolean, fetchNextPage: () => void];
+
+export function useFetchIssues(size: number): InfiniteQuery {
   const [page, setPage] = useState(0);
   const [hasNextPage, setHasNextPage] = useState(true);
   const [isLoading, setIsLoading] = useState(true);

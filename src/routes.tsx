@@ -1,7 +1,7 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 
 import { IssueContent } from './components/IssueContent';
-import { IssueList } from './components/IssueList';
+import { IssueListLayout } from './components/IssueListProvider';
 import { IssuePage } from './pages/IssuePage';
 
 export const router = createBrowserRouter([
@@ -15,10 +15,10 @@ export const router = createBrowserRouter([
     children: [
       {
         path: '',
-        element: <IssueList />,
+        element: <IssueListLayout />,
       },
       {
-        path: ':id',
+        path: ':number',
         element: <IssueContent />,
       },
     ],
