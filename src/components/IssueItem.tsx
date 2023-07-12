@@ -1,4 +1,5 @@
 import { AiOutlineComment } from 'react-icons/ai';
+import { Link } from 'react-router-dom';
 import { styled } from 'styled-components';
 interface IssueItemProps {
   issue: IssueType;
@@ -7,20 +8,22 @@ interface IssueItemProps {
 const IssueItem = ({ issue }: IssueItemProps) => {
   const date = issue.created_at.substring(0, 10);
   return (
-    <ItemBox>
-      <Title>
-        <span className="number">{'#' + issue.number}</span>
-        <span className="title">{issue.title}</span>
-        <span className="user">{issue.user}</span>
-      </Title>
-      <Info>
-        <span className="date">{date}</span>
-        <div className="comments">
-          <AiOutlineComment color="#888" />
-          <span>{issue.comments}</span>
-        </div>
-      </Info>
-    </ItemBox>
+    <Link to={`/${issue.number}`} style={{ textDecoration: 'none' }}>
+      <ItemBox>
+        <Title>
+          <span className="number">{'#' + issue.number}</span>
+          <span className="title">{issue.title}</span>
+          <span className="user">{issue.user}</span>
+        </Title>
+        <Info>
+          <span className="date">{date}</span>
+          <div className="comments">
+            <AiOutlineComment color="#888" />
+            <span>{issue.comments}</span>
+          </div>
+        </Info>
+      </ItemBox>
+    </Link>
   );
 };
 
@@ -33,6 +36,15 @@ const ItemBox = styled.div`
   background-color: #f2f4fe;
   border-radius: 5px;
   box-shadow: 0px 5px 5px 0px #ddd;
+  color: #000;
+  text-decoration: none;
+  &:hover {
+    * {
+      color: #fff !important;
+    }
+    background-color: #1239ff;
+    transition: background 0.3s;
+  }
 `;
 const Title = styled.div`
   display: flex;
