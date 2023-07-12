@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 type useInfiniteFetchOption<T> = {
+  perPage?: number;
   onSuccess?: (data: T[]) => void;
   onError?: (error?: unknown) => void;
   // suspense?: boolean;
@@ -10,7 +11,7 @@ type useInfiniteFetchOption<T> = {
 // GYU-TODO: 시간나면 Suspense 도 구현하기
 export function useInfiniteFetch<T>(
   fetcher: (pageIndex: number, perPage: number) => Promise<T[]>,
-  { onSuccess, onError, useErrorBoundary = false }: useInfiniteFetchOption<T> = {},
+  { perPage = 5, onSuccess, onError, useErrorBoundary = false }: useInfiniteFetchOption<T> = {},
 ) {
   const pageIndexRef = useRef(1);
 
@@ -27,7 +28,7 @@ export function useInfiniteFetch<T>(
     setError(null);
 
     try {
-      const data = await fetcher(pageIndexRef.current++, 5);
+      const data = await fetcher(pageIndexRef.current++, perPage);
       setData((prev) => [...prev, ...data]);
       onSuccess && onSuccess(data);
     } catch (error: any) {
