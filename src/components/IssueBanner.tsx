@@ -14,7 +14,7 @@ function formatDate(date: string) {
   return dayjs(date).format('YYYY년 MM월 DD일');
 }
 
-export function IssueHeader({ issueNumber, title, author, created_at, comments }: IssueInfoProps) {
+export function IssueBanner({ issueNumber, title, author, created_at, comments }: IssueInfoProps) {
   return (
     <div>
       <Title>
@@ -60,7 +60,6 @@ const Comment = styled.div`
   display: flex;
 
   svg {
-    margin-top: 1px;
     margin-right: 3px;
   }
 `;

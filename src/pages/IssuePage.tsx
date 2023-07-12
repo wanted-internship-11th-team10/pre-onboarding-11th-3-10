@@ -17,7 +17,7 @@ export function IssuePage() {
 const Header = styled.div`
   text-align: center;
   padding: 20px 0;
-  border-bottom: 2px solid gray;
+  border-bottom: 2px solid rgb(100, 100, 100, 0.7);
 `;
 
 const Container = styled.div`

@@ -14,6 +14,7 @@ export function Advertise() {
 
 const Container = styled.div`
   width: 350px;
+  height: 100px;
   margin: auto;
   margin-bottom: 20px;
 

@@ -3,7 +3,7 @@ import { styled } from 'styled-components';
 
 import { IssueData } from '@/api/issue';
 import { useFetchIssue } from '@/hook/useFetchIssue';
-import { IssueHeader } from './IssueHeader';
+import { IssueBanner } from './IssueBanner';
 
 function isIssueDataType(object: object | undefined): object is IssueData {
   if (!object) return false;
@@ -21,7 +21,7 @@ export function Issue() {
             <ImgWrapper>
               <img src={issue.user?.avatar_url} />
             </ImgWrapper>
-            <IssueHeader
+            <IssueBanner
               issueNumber={issue.number}
               title={issue.title}
               author={issue.user?.login}

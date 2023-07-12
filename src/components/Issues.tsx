@@ -4,7 +4,7 @@ import { styled } from 'styled-components';
 
 import { IssueData } from '@/api/issue';
 import { Advertise } from './Advertise';
-import { IssueHeader } from './IssueHeader';
+import { IssueBanner } from './IssueBanner';
 
 function isAdCell(index: number) {
   return index !== 0 && index % 4 === 0;
@@ -21,7 +21,7 @@ export function Issues({ issues }: { issues: IssueData[] }) {
         <Fragment key={issue.id}>
           {isAdCell(index) && <Advertise />}
           <Box onClick={() => handleClickIssue(issue.number)}>
-            <IssueHeader
+            <IssueBanner
               issueNumber={issue.number}
               title={issue.title}
               author={issue.user?.login}
