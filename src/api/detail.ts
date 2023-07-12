@@ -7,7 +7,7 @@ export const getDetail = async (issue_number: string) => {
   try {
     const res = await axios.get(BACKEND_URL + `/${issue_number}`, {
       headers: {
-        Authorization: `Bearer ${GITHUB_TOKEN}`,
+        Authorization: GITHUB_TOKEN && `Bearer ${GITHUB_TOKEN}`,
         'X-GitHub-Api-Version': '2022-11-28',
       },
     });
