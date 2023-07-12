@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { styled } from 'styled-components';
 
 import { getIssues, useIssuesDispatch, useIssuesState } from '@/context/issuesContext';
+import AdBanner from './AdBanner';
 import IssueItem from './IssueItem';
 
 const IssueList = () => {
@@ -14,8 +15,8 @@ const IssueList = () => {
 
   const { data } = state.issues;
 
-  const list = data?.map((issue: IssueType) => {
-    return <IssueItem issue={issue} />;
+  const list = data?.map((issue: IssueType, i: number) => {
+    return i > 1 && i % 5 == 0 ? <AdBanner /> : <IssueItem issue={issue} />;
   });
 
   return (
@@ -30,5 +31,10 @@ const ListBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  img {
+    position: relative;
+    margin: 0 auto;
+    width: 800px;
+  }
 `;
 export default IssueList;
