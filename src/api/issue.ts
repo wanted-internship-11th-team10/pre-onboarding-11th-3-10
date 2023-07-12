@@ -3,7 +3,7 @@ import { client } from '.';
 import { IssueType } from '@/types/issue';
 
 export async function getIssue(): Promise<IssueType[]> {
-  const response = await client.get('/issues');
+  const response = await client.get('/issues?sort=comments&direction=desc');
   return response.data;
 }
 
