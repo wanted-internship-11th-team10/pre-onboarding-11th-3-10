@@ -1,17 +1,7 @@
 import { client } from '.';
+import { Endpoints } from '@octokit/types';
 
-export interface IssueData {
-  id: number;
-  title: string;
-  number: number;
-  created_at: string;
-  comments: number;
-  body: string;
-  user?: {
-    login: string;
-    avatar_url: string;
-  };
-}
+export type IssueData = Endpoints['GET /repos/{owner}/{repo}/issues']['response']['data'][0];
 
 const OWNER = 'facebook';
 const REPO = 'react';
