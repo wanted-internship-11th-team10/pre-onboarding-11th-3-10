@@ -1,9 +1,10 @@
 /** @jsxImportSource @emotion/react */
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { css } from '@emotion/react';
 
 import { getIssues } from './api';
-import { Header, Row } from './components';
+import { Ad, Header, Row } from './components';
+import { env } from './constant';
 import { Issue } from './model';
 
 function App() {
@@ -39,9 +40,14 @@ function App() {
           gap: 1rem;
         `}
       >
-        {issues.map((issue, idx) => (
-          <Row key={idx} issue={issue} />
-        ))}
+        {issues.map((issue, idx) => {
+          return (
+            <Fragment>
+              <Row key={idx} issue={issue} />
+              {(idx + 1) % 4 === 0 ? <Ad url={env.IMAGE_URL} href="https://www.wanted.co.kr/" /> : null}
+            </Fragment>
+          );
+        })}
       </div>
     </main>
   );
