@@ -7,8 +7,7 @@ import { Issues } from './Issues';
 
 export function IssueList() {
   const [issues, isLoading, hasNextPage, fetchNextPage] = useIssueContext();
-  const ref = useInfiniteScroll((entry, observer) => {
-    observer.unobserve(entry.target);
+  const ref = useInfiniteScroll(() => {
     if (!isLoading && hasNextPage) fetchNextPage();
   });
 

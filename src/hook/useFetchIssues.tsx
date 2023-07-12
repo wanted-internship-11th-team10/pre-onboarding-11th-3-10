@@ -7,7 +7,7 @@ export type InfiniteQuery = [data: IssueData[], isLoading: boolean, hasNextPage:
 export function useFetchIssues(size: number): InfiniteQuery {
   const [page, setPage] = useState(1);
   const [hasNextPage, setHasNextPage] = useState(true);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState<IssueData[]>([]);
 
   const fetchNextPage = () => setPage((prev) => prev + 1);
