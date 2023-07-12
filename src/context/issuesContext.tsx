@@ -5,11 +5,11 @@ import { createContext, Dispatch, useContext, useReducer } from 'react';
 const BACKEND_URL = 'https://api.github.com/repos/facebook/react/issues';
 const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_TOKEN;
 
-type Action = { type: 'GET_ISSUES' } | { type: 'GET_ISSUES_SUCCESS'; data: IssueType };
+type Action = { type: 'GET_ISSUES' } | { type: 'GET_ISSUES_SUCCESS'; data: IssueType[] };
 type State = {
   issues: {
     loading: boolean;
-    data: IssueType | null;
+    data: IssueType[] | null;
   };
 };
 
@@ -24,9 +24,13 @@ export const getIssues = async (dispatch: IssuesDispatch) => {
         'X-GitHub-Api-Version': '2022-11-28',
       },
     });
+    const filter_data = response.data.filter((item: IssueDTO) => item.state == 'open');
+    const sort_data = filter_data.sort((a: IssueType, b: IssueType) => {
+      return b.comments - a.comments;
+    });
     dispatch({
       type: 'GET_ISSUES_SUCCESS',
-      data: response.data.map((item: IssueDTO) => {
+      data: sort_data.map((item: IssueDTO) => {
         return {
           title: item.title,
           number: item.number,
@@ -54,7 +58,7 @@ const loadingState = {
   error: null,
 };
 
-const success = (data: IssueType) => ({
+const success = (data: IssueType[]) => ({
   loading: false,
   data,
   error: null,

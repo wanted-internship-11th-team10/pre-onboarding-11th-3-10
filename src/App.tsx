@@ -1,11 +1,21 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
 import { IssuesProvider } from './context/issuesContext';
-import Issues from './pages/issues';
+import HeaderLayout from './layout/HeaderLayout';
+import { Detail, Issues } from './pages';
 
 function App() {
   return (
-    <IssuesProvider>
-      <Issues />
-    </IssuesProvider>
+    <BrowserRouter>
+      <IssuesProvider>
+        <HeaderLayout>
+          <Routes>
+            <Route path="/" element={<Issues />}></Route>
+            <Route path="/:id" element={<Detail />}></Route>
+          </Routes>
+        </HeaderLayout>
+      </IssuesProvider>
+    </BrowserRouter>
   );
 }
 

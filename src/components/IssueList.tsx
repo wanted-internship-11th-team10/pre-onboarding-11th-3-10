@@ -1,33 +1,34 @@
-import { useCallback, useEffect } from 'react';
+import { useEffect } from 'react';
+import { styled } from 'styled-components';
 
 import { getIssues, useIssuesDispatch, useIssuesState } from '@/context/issuesContext';
-// import { getIssues } from '@/api/issues';
-// import IssueItem from './IssueItem';
+import IssueItem from './IssueItem';
 
 const IssueList = () => {
   const state = useIssuesState();
   const dispatch = useIssuesDispatch();
 
-  const fetchData = useCallback(() => {
-    getIssues(dispatch);
+  useEffect(() => {
+    if (dispatch) getIssues(dispatch);
   }, [dispatch]);
 
-  useEffect(() => {
-    fetchData();
-  }, [fetchData]);
-
   const { data } = state.issues;
-  console.log(data);
-  // const filter_data = data.filter((item: any) => item.state == 'open');
-  // const sort_data = filter_data.sort((a:any, b:any) => {
-  //   return b.comments - a.comments;
-  // });
-  // const list = sort_data.map((issue) => {
-  //   return <IssueItem issue={issue} />;
-  // });
 
-  // return <>{list}</>;
-  return <div></div>;
+  const list = data?.map((issue: IssueType) => {
+    return <IssueItem issue={issue} />;
+  });
+
+  return (
+    <ListBox>
+      {data && list}
+      {!data && 'error'}
+    </ListBox>
+  );
 };
 
+const ListBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+`;
 export default IssueList;

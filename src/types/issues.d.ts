@@ -8,6 +8,7 @@ interface IssueType {
 interface IssueDTO {
   title: string;
   number: number;
+  state: string;
   comments: number;
   user: {
     login: string;

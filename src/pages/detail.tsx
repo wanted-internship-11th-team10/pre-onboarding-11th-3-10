@@ -1,5 +1,5 @@
-const DetailView = () => {
+const Detail = () => {
   return <div></div>;
 };
 
-export default DetailView;
+export default Detail;
