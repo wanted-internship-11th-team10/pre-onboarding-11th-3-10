@@ -9,7 +9,6 @@ export const IssueItemWrapper = styled.div`
   &::after {
     content: '';
     border: 0.5px solid #d9d9d9;
-    margin-bottom: 2rem;
   }
 `;
 
