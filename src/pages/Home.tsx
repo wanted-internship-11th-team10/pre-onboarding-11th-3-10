@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { css } from '@emotion/react';
 
 import { Issue } from '@/model';
-import { Ad, Header, Row } from '../components';
+import { Ad, Row } from '../components';
 import { env } from '../constant';
 import { useIssues } from '../context/IssuesContext';
 
@@ -19,15 +19,7 @@ const Home = () => {
   };
 
   return (
-    <main
-      css={css`
-        width: 500px;
-        margin: 1.25rem auto 0;
-        padding: 1rem;
-        border: 2px solid black;
-      `}
-    >
-      <Header org="facebook" repo="react" />
+    <Fragment>
       <div
         css={css`
           display: flex;
@@ -44,7 +36,7 @@ const Home = () => {
           );
         })}
       </div>
-    </main>
+    </Fragment>
   );
 };
 
