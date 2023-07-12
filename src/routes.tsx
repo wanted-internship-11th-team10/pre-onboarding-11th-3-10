@@ -9,12 +9,9 @@ import { IssuePage } from './pages/IssuePage';
 
 export const router = createBrowserRouter([
   {
-    path: '/',
-    element: <Navigate to="/issues" replace />,
-  },
-  {
     path: '/issues',
     element: <IssuePage />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: '',
@@ -31,7 +28,7 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path: '*',
-    element: <ErrorPage />,
+    path: '/',
+    element: <Navigate to="/issues" replace />,
   },
 ]);
