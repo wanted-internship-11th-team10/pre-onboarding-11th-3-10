@@ -7,4 +7,9 @@ export const IssueDetailHeader = styled.div`
 
 export const IssueDetailContentWrapper = styled.div`
   margin-top: 3rem;
+
+  & img {
+    width: 100%;
+    height: 100%;
+  }
 `;
