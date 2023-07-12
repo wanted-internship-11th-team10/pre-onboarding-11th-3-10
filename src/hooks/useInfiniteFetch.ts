@@ -28,7 +28,7 @@ export function useInfiniteFetch<T>(
     setError(null);
 
     try {
-      const data = await fetcher(pageIndexRef.current++, perPage);
+      const data = await fetcher.apply(null, [pageIndexRef.current++, perPage]);
       setData((prev) => [...prev, ...data]);
       onSuccess && onSuccess(data);
     } catch (error: any) {
