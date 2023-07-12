@@ -6,3 +6,16 @@ function App() {
 }
 
 export default App;
+
+import { Outlet } from 'node_modules/react-router-dom/dist/index';
+
+import Header from './components/Header';
+
+export default function App() {
+  return (
+    <>
+      <Header />
+      <Outlet />
+    </>
+  );
+}
