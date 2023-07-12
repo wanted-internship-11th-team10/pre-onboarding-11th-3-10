@@ -14,6 +14,7 @@ export function IssuePage() {
     onNextFetch,
   } = useInfiniteFetch<Issue>((pageIndex, perPage) => getIssues(owner, repository, pageIndex, perPage), {
     perPage: 5,
+    isCache: true,
     // useErrorBoundary: true,
   });
 

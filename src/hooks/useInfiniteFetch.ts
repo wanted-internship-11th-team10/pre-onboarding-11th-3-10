@@ -1,17 +1,27 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
+// GYU-TODO: 시간나면 Suspense 도 구현하기
 type useInfiniteFetchOption<T> = {
   perPage?: number;
   onSuccess?: (data: T[]) => void;
   onError?: (error?: unknown) => void;
   // suspense?: boolean;
   useErrorBoundary?: boolean;
+  isCache?: boolean;
 };
 
-// GYU-TODO: 시간나면 Suspense 도 구현하기
+// GYU-TODO: 캐시 set으로 구현하기!! (귀찮...)
+type InfiniteCache =
+  | {
+      data: any[];
+      pageIndex: number;
+      perPage: number;
+    }
+  | undefined;
+let cache: InfiniteCache = undefined;
 export function useInfiniteFetch<T>(
   fetcher: (pageIndex: number, perPage: number) => Promise<T[]>,
-  { perPage = 5, onSuccess, onError, useErrorBoundary = false }: useInfiniteFetchOption<T> = {},
+  { perPage = 5, onSuccess, onError, useErrorBoundary = false, isCache = false }: useInfiniteFetchOption<T> = {},
 ) {
   const pageIndexRef = useRef(1);
 
@@ -20,6 +30,10 @@ export function useInfiniteFetch<T>(
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    if (isCache && cache) return;
+    if (data.length) {
+      return;
+    }
     fetch();
   }, []);
 
@@ -28,8 +42,14 @@ export function useInfiniteFetch<T>(
     setError(null);
 
     try {
-      const data = await fetcher.apply(null, [pageIndexRef.current++, perPage]);
-      setData((prev) => [...prev, ...data]);
+      const newData = await fetcher.apply(null, [pageIndexRef.current++, perPage]);
+      setData((prev) => [...prev, ...newData]);
+
+      cache = {
+        data: cache ? [...cache.data, ...newData] : [...newData],
+        perPage: perPage,
+        pageIndex: pageIndexRef.current,
+      };
       onSuccess && onSuccess(data);
     } catch (error: any) {
       setError(error);
@@ -44,5 +64,5 @@ export function useInfiniteFetch<T>(
     throw new Error(error);
   }
 
-  return { isLoading: isLoading || !data, data, error, onNextFetch: fetch };
+  return { isLoading: isLoading || !data, data: isCache && cache ? cache.data : data, error, onNextFetch: fetch };
 }
