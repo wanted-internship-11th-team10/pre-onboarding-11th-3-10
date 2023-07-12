@@ -1,7 +1,7 @@
 import type { AxiosResponse } from 'axios';
 import axios from 'axios';
 
-import { env } from '@/constant';
+import { env } from '@/shared/constant';
 
 const client = axios.create({
   baseURL: env.BASE_URL,

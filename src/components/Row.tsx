@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 
-import { Issue } from '@/model';
+import { Issue } from '@/shared/model';
 
 interface RowProps {
   issue: Issue;

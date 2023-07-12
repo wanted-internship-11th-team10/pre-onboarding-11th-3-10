@@ -1,8 +1,8 @@
 import { ReactNode, useCallback, useState } from 'react';
 
 import { IssuesContext } from './IssuesContext';
-import { getIssues } from '../api';
-import { Issue } from '../model';
+import { getIssues } from '../shared/api';
+import { Issue } from '../shared/model';
 
 export const IssuesProvider = ({ children }: { children: ReactNode }) => {
   const [issues, setIssues] = useState<Issue[]>([]);

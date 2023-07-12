@@ -4,10 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import { css } from '@emotion/react';
 
 import { useInfiniteFetch } from '@/hooks';
-import { Issue } from '@/model';
+import { Issue } from '@/shared/model';
 import { Ad, LoadingOrMore, Row } from '../components';
-import { env } from '../constant';
 import { useIssues } from '../context';
+import { env } from '../shared/constant';
 
 const Home = () => {
   const { issues, selectIssue, loading, fetchIssues } = useIssues();

@@ -1,6 +1,6 @@
 import { createContext, useContext } from 'react';
 
-import { Issue } from '../model';
+import { Issue } from '../shared/model';
 
 export const IssuesContext = createContext<{
   issues: Issue[];
