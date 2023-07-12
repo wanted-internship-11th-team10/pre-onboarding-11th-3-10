@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import AdImage from '@/assets/광고.png';
@@ -6,10 +6,26 @@ import Error from '@/components/Error';
 import IssueCard from '@/components/IssueCard';
 import Loader from '@/components/Loader';
 import { IssueContext } from '@/context/IssueContext';
+import { Issue } from '@/types/issue';
+import { AdBox, IssueListContainer } from './style';
 
 function IssueList() {
   const navigate = useNavigate();
   const { loading, error, issues } = useContext(IssueContext);
+  const [issueList, setIssueList] = useState<(Issue | null)[]>([]);
+
+  useEffect(() => {
+    const issueList: (Issue | null)[] = [];
+    issues.forEach((issue, index) => {
+      issueList.push(issue);
+      if ((index + 1) % 4 === 0) {
+        issueList.push(null);
+      }
+
+      console.log(issueList);
+      setIssueList(issueList);
+    });
+  }, [issues]);
 
   const clickToDetail = (id: number) => {
     navigate(`/${id}`);
@@ -28,15 +44,11 @@ function IssueList() {
   }
 
   return (
-    <>
-      {issues?.map((issue, index) => (
-        <div key={issue.id}>
-          {(index + 1) % 5 === 0 ? (
-            <div onClick={() => clickAd()}>
-              <img src={AdImage} alt="광고" width="300" height="100" />
-            </div>
-          ) : (
-            <div onClick={() => clickToDetail(issue.number)}>
+    <IssueListContainer>
+      {issueList?.map((issue, index) => {
+        if (issue) {
+          return (
+            <div key={issue.id} onClick={() => clickToDetail(issue.number)}>
               <IssueCard
                 id={issue.id}
                 state={issue.state}
@@ -49,10 +61,16 @@ function IssueList() {
                 repository_url={issue.repository_url}
               />
             </div>
-          )}
-        </div>
-      ))}
-    </>
+          );
+        } else {
+          return (
+            <AdBox key={index} onClick={() => clickAd()}>
+              <img src={AdImage} alt="광고" />
+            </AdBox>
+          );
+        }
+      })}
+    </IssueListContainer>
   );
 }
 

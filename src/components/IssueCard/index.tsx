@@ -1,14 +1,20 @@
 import { Issue } from '@/types/issue';
-import { CardContainer } from './style';
+import { BottomBox, CardContainer, LeftBox, RightBox, TopBox } from './style';
 
 function IssueCard({ number, title, user, created_at, comments }: Issue) {
   return (
     <CardContainer>
-      <div>이슈번호 {number}</div>
-      <div>이슈제목 {title}</div>
-      <div>작성자 {user.login}</div>
-      <div>작성일 {created_at}</div>
-      <div>코멘트 수 {comments}</div>
+      <LeftBox>
+        <TopBox>
+          <div>#{number}</div>
+          <div>{title}</div>
+        </TopBox>
+        <BottomBox>
+          <div>작성자: {user.login},</div>
+          <div>작성일: {created_at.slice(0, 10)}</div>
+        </BottomBox>
+      </LeftBox>
+      <RightBox>코멘트 {comments}</RightBox>
     </CardContainer>
   );
 }
