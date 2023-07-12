@@ -19,6 +19,7 @@ interface DetailDTO {
   title: string;
   number: number;
   comments: number;
+  body: string;
   user: {
     login: string;
     avatar_url: string;

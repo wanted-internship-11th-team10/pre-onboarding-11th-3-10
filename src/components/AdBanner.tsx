@@ -11,6 +11,7 @@ const Banner = styled.a`
   position: relative;
   margin: 0 auto;
   max-width: 800px;
+  width: 100%;
   display: flex;
   justify-content: center;
   img {
