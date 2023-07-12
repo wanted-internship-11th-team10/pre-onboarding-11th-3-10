@@ -2,26 +2,25 @@ import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import IssueMarkDownViewer from '@/components/IssueMarkDownViewer';
+import Loader from '@/components/Loader';
 import { IssueContext } from '@/context/IssueContext';
-import { IssueType } from '@/types/issue';
+import { Issue } from '@/types/issue';
 
 function IssueDetail() {
   const { id } = useParams();
-  const issue = useContext(IssueContext);
-  const [selectedIssue, setSelectedIssue] = useState<IssueType>();
+  const { issues } = useContext(IssueContext);
+  const [selectedIssue, setSelectedIssue] = useState<Issue>();
 
   useEffect(() => {
-    if (issue && id) {
-      const selectedIssue = issue?.find((issue) => issue.number === parseInt(id));
+    if (issues && id) {
+      const selectedIssue = issues?.find((issue) => issue.number === parseInt(id));
       setSelectedIssue(selectedIssue);
     }
-  }, [issue, id]);
+  }, [issues, id]);
 
   if (!selectedIssue) {
-    return <div>게시글을 찾을 수 없습니다.</div>;
+    return <Loader />;
   }
-
-  console.log(selectedIssue);
 
   return (
     <>

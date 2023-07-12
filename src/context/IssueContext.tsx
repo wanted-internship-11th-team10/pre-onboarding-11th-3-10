@@ -1,5 +1,17 @@
 import { createContext } from 'react';
 
-import { IssueType } from '@/types/issue';
+import { Issue } from '@/types/issue';
 
-export const IssueContext = createContext<IssueType[] | null>(null);
+type IssueContextType = {
+  issues: Issue[];
+  loading: boolean;
+  error: string;
+};
+
+const defaultValues: IssueContextType = {
+  issues: [],
+  loading: true,
+  error: '',
+};
+
+export const IssueContext = createContext<IssueContextType>(defaultValues);

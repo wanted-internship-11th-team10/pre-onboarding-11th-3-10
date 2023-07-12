@@ -3,26 +3,32 @@ import { useContext, useEffect, useState } from 'react';
 import { IssueContext } from '@/context/IssueContext';
 
 function Header() {
-  const issue = useContext(IssueContext);
+  const { loading, issues } = useContext(IssueContext);
   const [header, setHeader] = useState({
     organizationName: '',
     repositoryName: '',
   });
 
   useEffect(() => {
-    if (issue && issue[0] && issue?.[0].repository_url) {
-      const pathParts = issue?.[0].repository_url.split('/');
+    if (issues && issues[0] && issues?.[0].repository_url) {
+      const pathParts = issues?.[0].repository_url.split('/');
       setHeader({
         organizationName: pathParts[4],
         repositoryName: pathParts[5],
       });
     }
-  }, [issue]);
+  }, [issues]);
 
   return (
-    <div>
-      {header.organizationName} / {header.repositoryName}
-    </div>
+    <>
+      {loading ? (
+        ''
+      ) : (
+        <div>
+          {header.organizationName} / {header.repositoryName}
+        </div>
+      )}
+    </>
   );
 }
 
