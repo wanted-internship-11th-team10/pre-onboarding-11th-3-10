@@ -6,6 +6,8 @@ export const IssuesContext = createContext<{
   issues: Issue[];
   selectedIssue: Issue | null;
   selectIssue: (issue: Issue | null) => void;
+  loading: boolean;
+  fetchIssues: () => void;
 } | null>(null);
 
 export const useIssues = () => {

@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { Fragment } from 'react';
+import { Fragment, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { css } from '@emotion/react';
 
@@ -9,14 +9,30 @@ import { env } from '../constant';
 import { useIssues } from '../context/IssuesContext';
 
 const Home = () => {
-  const { issues, selectIssue } = useIssues();
+  const { issues, selectIssue, loading, fetchIssues } = useIssues();
   const navigate = useNavigate();
+  const pageEnd = useRef<HTMLDivElement>(null);
 
   const handleRowClick = (issue: Issue) => () => {
-    console.log('clicked');
     selectIssue(issue);
     navigate('/detail');
   };
+
+  useEffect(() => {
+    if (pageEnd.current == null) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          fetchIssues();
+        }
+      },
+      { threshold: 1 },
+    );
+    observer.observe(pageEnd.current);
+
+    return observer.disconnect;
+  }, [fetchIssues]);
 
   return (
     <Fragment>
@@ -35,6 +51,13 @@ const Home = () => {
             </Fragment>
           );
         })}
+        <div
+          css={css`
+            text-align: center;
+          `}
+        >
+          {loading ? <div>loading...</div> : <div ref={pageEnd}>더 보기...</div>}
+        </div>
       </div>
     </Fragment>
   );
