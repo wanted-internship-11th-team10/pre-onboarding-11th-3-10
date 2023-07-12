@@ -2,6 +2,7 @@
 import { createContext, Dispatch, useContext, useReducer } from 'react';
 
 type Action = { type: 'GET_ISSUES' } | { type: 'GET_ISSUES_SUCCESS'; data: IssueType[] } | { type: 'GET_ERROR' };
+
 type State = {
   issues: {
     loading: boolean;
