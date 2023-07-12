@@ -44,6 +44,7 @@ const Container = styled.div`
   padding: 30px;
   margin-bottom: 20px;
   box-shadow: 0px 0px 5px 0px #bcbcbc;
+  border-radius: 5px;
 `;
 
 const ImgWrapper = styled.div`
@@ -60,4 +61,5 @@ const ImgWrapper = styled.div`
 const BodyContainer = styled.div`
   padding: 30px;
   box-shadow: 0px 0px 5px 0px #bcbcbc;
+  border-radius: 5px;
 `;

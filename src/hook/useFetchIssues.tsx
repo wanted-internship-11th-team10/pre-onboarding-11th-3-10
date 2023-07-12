@@ -10,7 +10,7 @@ export function useFetchIssues(size: number): InfiniteQuery {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState<IssueData[]>([]);
 
-  const fetchNextPage = () => setPage((page) => page + 1);
+  const fetchNextPage = () => setPage((prev) => prev + 1);
 
   useEffect(() => {
     setIsLoading(true);

@@ -39,5 +39,6 @@ const Box = styled.div`
   padding: 30px;
   box-shadow: 0px 0px 5px 0px #bcbcbc;
   margin-bottom: 20px;
+  border-radius: 5px;
   cursor: pointer;
 `;

@@ -1,14 +1,13 @@
 import { styled } from 'styled-components';
 
-import { PER_PAGE } from '@/api/issue';
-import { useFetchIssues } from '@/hook/useFetchIssues';
+import { useIssueContext } from '@/context/useIssueContext';
 import { useInfiniteScroll } from '@/hook/useInfiniteScroll';
 import { Loading } from './common/Loading';
 import { Issues } from './Issues';
 
 export function IssueList() {
-  const [issues, isLoading, hasNextPage, fetchNextPage] = useFetchIssues(PER_PAGE);
-  const ref = useInfiniteScroll(async (entry, observer) => {
+  const [issues, isLoading, hasNextPage, fetchNextPage] = useIssueContext();
+  const ref = useInfiniteScroll((entry, observer) => {
     observer.unobserve(entry.target);
     if (!isLoading && hasNextPage) fetchNextPage();
   });
