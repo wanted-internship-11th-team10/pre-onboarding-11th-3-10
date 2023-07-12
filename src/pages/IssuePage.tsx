@@ -3,22 +3,28 @@ import { styled } from 'styled-components';
 
 export function IssuePage() {
   return (
-    <div>
+    <Container>
       <Header>
         <h1>Facebook/react</h1>
       </Header>
-      <Container>
+      <Inner>
         <Outlet />
-      </Container>
-    </div>
+      </Inner>
+    </Container>
   );
 }
+
+const Container = styled.div`
+  max-width: 600px;
+  min-width: 300px;
+  margin: auto;
+`;
 
 const Header = styled.div`
   text-align: center;
   padding: 20px 0;
 `;
 
-const Container = styled.div`
+const Inner = styled.div`
   padding: 20px;
 `;
