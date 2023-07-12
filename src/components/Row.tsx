@@ -9,11 +9,17 @@ interface RowProps {
 }
 
 export const Row = ({ issue, onClick }: RowProps) => {
+  const date = new Date(issue.created_at).toLocaleString('ko-KR', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+
   return (
     <div css={rowContainer} onClick={onClick}>
       <div css={rowTitle}>
         <span>{`#${issue.number} ${issue.title}`}</span>
-        <span css={rowDesc}>{`작성자: ${issue.user.login}, 작성일: ${issue.created_at}`}</span>
+        <span css={rowDesc}>{`작성자: ${issue.user.login}, 작성일: ${date}`}</span>
       </div>
       <span css={rowComment}>코멘트: {issue.comments}</span>
     </div>
