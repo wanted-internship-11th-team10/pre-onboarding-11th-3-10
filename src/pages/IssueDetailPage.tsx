@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { getIssue } from '@/apis';
 import { Avatar } from '@/components/Avatar';
 import { IssueItem } from '@/components/IssueItem';
+import { LoadingSpinner } from '@/components/LoadingSpinner';
 import { useFetch } from '@/hooks/useFetch.ts';
 import * as S from './IssueDetailPage.styles.tsx';
 import { IssueDetailContentWrapper } from './IssueDetailPage.styles.tsx';
@@ -14,7 +15,7 @@ export function IssueDetailPage() {
     useErrorBoundary: true,
   });
 
-  if (isLoading || !issue) return <div>로딩중...</div>;
+  if (isLoading || !issue) return <LoadingSpinner isLoading isFullWidth />;
 
   const { user, body } = issue;
   return (
