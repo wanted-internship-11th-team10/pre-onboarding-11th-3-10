@@ -1,6 +1,6 @@
 import { getIssues, Issue } from '@/apis';
 import { IssueList } from '@/components/IssueList';
-import { LoadingSpinner } from '@/components/LoadingSpinner';
+import { LoadingSpinner } from '@/components/ui/LoadingSpinner';
 import { useInfiniteFetch } from '@/hooks/useInfiniteFetch.ts';
 
 export function IssuePage() {

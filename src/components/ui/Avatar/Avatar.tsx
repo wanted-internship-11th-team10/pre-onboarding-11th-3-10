@@ -1,4 +1,4 @@
-import * as S from './Avatar.styles';
+import * as S from './Avatar.styles.tsx';
 
 interface AvatarProps {
   src: string;
