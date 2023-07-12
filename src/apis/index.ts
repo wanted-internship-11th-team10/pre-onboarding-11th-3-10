@@ -12,10 +12,8 @@ export const client = axios.create({
   },
 });
 
-export function wait(sec: number) {
-  const start = Date.now();
-  let now = start;
-  while (now - start < sec * 1000) {
-    now = Date.now();
-  }
+export function delay(milliseconds: number) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, milliseconds);
+  });
 }

@@ -7,17 +7,15 @@ export type Issue = components['schemas']['issue'];
 
 /**
  * @link https://docs.github.com/en/rest/issues/issues?apiVersion=2022-11-28#list-repository-issues
- * @param sort
  */
-export async function getIssues(sort = 'comments'): Promise<Issue[]> {
-  const query = qs.stringify({ sort: sort, per_page: 5, page: 1 });
+export async function getIssues(pageIndex = 1, perPage = 5, sort = 'comments'): Promise<Issue[]> {
+  const query = qs.stringify({ page: pageIndex, per_page: perPage, sort: sort });
   const response = await client.get(`/facebook/react/issues?${query}`);
   return response.data;
 }
 
 /**
  * @link https://docs.github.com/en/rest/issues/issues?apiVersion=2022-11-28#get-an-issue
- * @param issueNumber number
  */
 export async function getIssue(issueNumber: string): Promise<Issue> {
   const response = await client.get(`/facebook/react/issues/${issueNumber}`);
