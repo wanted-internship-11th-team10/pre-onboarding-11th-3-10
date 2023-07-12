@@ -21,8 +21,6 @@ function IssueList() {
       if ((index + 1) % 4 === 0) {
         issueList.push(null);
       }
-
-      console.log(issueList);
       setIssueList(issueList);
     });
   }, [issues]);
