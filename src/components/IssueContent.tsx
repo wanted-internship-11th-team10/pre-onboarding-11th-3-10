@@ -1,39 +1,39 @@
-import { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
-import { useParams } from 'react-router-dom';
 import { styled } from 'styled-components';
 
-import { fetchIssue, IssueData } from '@/api/issue';
+import { IssueData } from '@/api/issue';
+import { useFetchIssue } from '@/hook/useFetchIssue';
 import { IssueInfo } from './IssueInfo';
 
+function isIssueDataType(object: object | undefined): object is IssueData {
+  if (!object) return false;
+  return 'title' in object;
+}
+
 export function IssueContent() {
-  const { number } = useParams();
-  const [issue, setIssue] = useState<IssueData>();
-
-  useEffect(() => {
-    if (!number) return;
-
-    fetchIssue(number).then((res) => setIssue(res));
-  }, [number]);
+  const issue = useFetchIssue();
 
   return (
     <div>
-      {issue && (
-        <Container>
-          <ImgWrapper>
-            <img src={issue.user?.avatar_url} />
-          </ImgWrapper>
-          <IssueInfo
-            issueNumber={issue.number}
-            title={issue.title}
-            author={issue.user?.login}
-            created_at={issue.created_at}
-            comments={issue.comments}
-          />
-        </Container>
+      {isIssueDataType(issue) && (
+        <>
+          <Container>
+            <ImgWrapper>
+              <img src={issue.user?.avatar_url} />
+            </ImgWrapper>
+            <IssueInfo
+              issueNumber={issue.number}
+              title={issue.title}
+              author={issue.user?.login}
+              created_at={issue.created_at}
+              comments={issue.comments}
+            />
+          </Container>
+          <BodyContainer>
+            <ReactMarkdown>{issue?.body ?? ''}</ReactMarkdown>
+          </BodyContainer>
+        </>
       )}
-      <Divider />
-      <ReactMarkdown>{issue?.body ?? ''}</ReactMarkdown>
     </div>
   );
 }
@@ -41,12 +41,9 @@ export function IssueContent() {
 const Container = styled.div`
   display: grid;
   grid-template-columns: 80px auto;
-`;
-
-const Divider = styled.div`
-  height: 2px;
-  background-color: gray;
-  margin: 30px 0;
+  padding: 30px;
+  margin: 20px 0;
+  box-shadow: 0px 0px 5px 0px #bcbcbc;
 `;
 
 const ImgWrapper = styled.div`
@@ -58,4 +55,9 @@ const ImgWrapper = styled.div`
     height: 100%;
     border-radius: 50%;
   }
+`;
+
+const BodyContainer = styled.div`
+  padding: 30px;
+  box-shadow: 0px 0px 5px 0px #bcbcbc;
 `;

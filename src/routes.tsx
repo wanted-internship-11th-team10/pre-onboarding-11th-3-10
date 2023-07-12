@@ -1,5 +1,7 @@
+import { Suspense } from 'react';
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 
+import { Loading } from './components/common/Loading';
 import { IssueContent } from './components/IssueContent';
 import { IssueProvider } from './components/IssueProvider';
 import { ErrorPage } from './pages/ErrorPage';
@@ -20,7 +22,11 @@ export const router = createBrowserRouter([
       },
       {
         path: ':number',
-        element: <IssueContent />,
+        element: (
+          <Suspense fallback={<Loading />}>
+            <IssueContent />
+          </Suspense>
+        ),
       },
     ],
   },
