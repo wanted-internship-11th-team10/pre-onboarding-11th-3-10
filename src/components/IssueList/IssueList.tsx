@@ -14,7 +14,7 @@ export function IssueList({ issues }: IssueListProps) {
     <S.IssueListWrapper>
       {issues.map((issue, index) => (
         <div key={index + 1}>
-          <Link to={`/${issue.number}`} style={{ cursor: 'pointer' }}>
+          <Link to={`/issue/${issue.number}`} style={{ cursor: 'pointer' }}>
             <IssueItem issue={issue} />
           </Link>
           <AdvertisementItem isView={(index + 1) % 4 === 0} index={index} />
