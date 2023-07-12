@@ -1,6 +1,5 @@
 import dayjs from 'dayjs';
 import { GoComment } from 'react-icons/go';
-import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 interface IssueInfoProps {
@@ -16,12 +15,8 @@ function formatDate(date: string) {
 }
 
 export function IssueInfo({ issueNumber, title, author, created_at, comments }: IssueInfoProps) {
-  const navigate = useNavigate();
-
-  const handleClickIssue = () => navigate(`${issueNumber}`);
-
   return (
-    <Container onClick={handleClickIssue}>
+    <>
       <Title>
         <div>#{issueNumber}</div>
         <div>{title}</div>
@@ -37,16 +32,9 @@ export function IssueInfo({ issueNumber, title, author, created_at, comments }: 
           {comments}
         </Comment>
       </Detail>
-    </Container>
+    </>
   );
 }
-
-const Container = styled.div`
-  padding: 20px;
-  box-shadow: 0px 0px 5px 0px #bcbcbc;
-  margin-bottom: 20px;
-  cursor: pointer;
-`;
 
 const Title = styled.div`
   display: flex;
