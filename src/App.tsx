@@ -1,27 +1,13 @@
 /** @jsxImportSource @emotion/react */
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment } from 'react';
 import { css } from '@emotion/react';
 
-import { getIssues } from './api';
 import { Ad, Header, Row } from './components';
 import { env } from './constant';
-import { Issue } from './model';
+import { useIssues } from './context/IssuesContext';
 
 function App() {
-  const [issues, setIssues] = useState<Issue[]>([]);
-
-  useEffect(() => {
-    const fetchIssues = async () => {
-      try {
-        const issues = await getIssues({ user: 'facebook', repo: 'react' });
-        setIssues(issues);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-
-    fetchIssues();
-  }, []);
+  const { issues, selectIssue } = useIssues();
 
   return (
     <main
@@ -43,7 +29,7 @@ function App() {
         {issues.map((issue, idx) => {
           return (
             <Fragment>
-              <Row key={idx} issue={issue} />
+              <Row key={idx} issue={issue} onClick={() => selectIssue(issue)} />
               {(idx + 1) % 4 === 0 ? <Ad url={env.IMAGE_URL} href="https://www.wanted.co.kr/" /> : null}
             </Fragment>
           );

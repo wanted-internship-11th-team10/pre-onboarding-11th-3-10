@@ -5,6 +5,7 @@ import { Issue } from '@/model';
 
 interface RowProps {
   issue: Issue;
+  onClick: () => void;
 }
 
 export const Row = ({ issue }: RowProps) => {
