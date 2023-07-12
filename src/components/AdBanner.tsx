@@ -10,7 +10,7 @@ const AdBanner = () => {
 const Banner = styled.a`
   position: relative;
   margin: 0 auto;
-  width: 800px;
+  max-width: 800px;
   display: flex;
   justify-content: center;
   img {

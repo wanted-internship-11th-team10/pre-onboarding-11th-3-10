@@ -15,3 +15,13 @@ interface IssueDTO {
   };
   created_at: string;
 }
+interface DetailDTO {
+  title: string;
+  number: number;
+  comments: number;
+  user: {
+    login: string;
+    avatar_url: string;
+  };
+  created_at: string;
+}

@@ -1,7 +1,8 @@
 import { useRef } from 'react';
 import { styled } from 'styled-components';
 
-import { getIssues, useIssuesDispatch, useIssuesState } from '@/context/issuesContext';
+import { getIssues } from '@/api/issues';
+import { useIssuesDispatch, useIssuesState } from '@/context/issuesContext';
 import { useIntersectionObserver } from '@/hook/customhook';
 import AdBanner from './AdBanner';
 import IssueItem from './IssueItem';

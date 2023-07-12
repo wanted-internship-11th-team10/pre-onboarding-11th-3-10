@@ -18,7 +18,7 @@ const IssueItem = ({ issue }: IssueItemProps) => {
         <Info>
           <span className="date">{date}</span>
           <div className="comments">
-            <AiOutlineComment color="#888" />
+            <AiOutlineComment />
             <span>{issue.comments}</span>
           </div>
         </Info>
@@ -28,7 +28,7 @@ const IssueItem = ({ issue }: IssueItemProps) => {
 };
 
 const ItemBox = styled.div`
-  width: 800px;
+  max-width: 800px;
   display: flex;
   margin: 0 auto;
   flex-direction: column;

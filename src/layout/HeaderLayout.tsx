@@ -17,6 +17,7 @@ const Layout = styled.div`
   margin: 0 auto;
   flex-direction: column;
   justify-content: center;
+  padding: 0 10%;
   max-width: 1280px;
 `;
 const Header = styled.h1`
