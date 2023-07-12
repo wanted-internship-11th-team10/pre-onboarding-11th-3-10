@@ -13,6 +13,7 @@ export function IssueDetailPage() {
   const params = useParams<{ id: string }>();
   const { owner, repository } = useIssue();
   const { data: issue, isLoading } = useFetch(() => getIssue(owner, repository, params.id!), {
+    queryKey: `issues/${owner}/${repository}/${params.id}`,
     useErrorBoundary: true,
   });
 

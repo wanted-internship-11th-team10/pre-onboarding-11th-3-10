@@ -13,8 +13,8 @@ export function IssuePage() {
     isLoading,
     onNextFetch,
   } = useInfiniteFetch<Issue>((pageIndex, perPage) => getIssues(owner, repository, pageIndex, perPage), {
+    queryKey: `issue/${owner}/${repository}`,
     perPage: 5,
-    isCache: true,
     // useErrorBoundary: true,
   });
 
