@@ -10,7 +10,7 @@ export const getIssues = async (dispatch: IssuesDispatch, count: number) => {
   try {
     const response = await axios.get(BACKEND_URL + `?per_page=10&page=${count}`, {
       headers: {
-        Authorization: `Bearer ${GITHUB_TOKEN}`,
+        Authorization: GITHUB_TOKEN && `Bearer ${GITHUB_TOKEN}`,
         'X-GitHub-Api-Version': '2022-11-28',
       },
     });
