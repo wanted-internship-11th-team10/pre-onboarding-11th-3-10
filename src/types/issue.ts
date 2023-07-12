@@ -9,6 +9,7 @@ export interface Issue {
   created_at: string; // 작성일
   comments: number; // 코멘트 수
   body: string; // 본문
+  onClick: () => void;
 }
 
 export interface IssueType {
