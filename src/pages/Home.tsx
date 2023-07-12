@@ -17,6 +17,7 @@ const Home = () => {
   useInfiniteFetch({
     targetRef: pageEnd,
     fetchCallback: fetchIssues,
+    threshold: 1,
   });
 
   const handleRowClick = (issue: Issue) => () => {

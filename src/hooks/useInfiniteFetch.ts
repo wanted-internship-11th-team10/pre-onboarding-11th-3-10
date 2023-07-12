@@ -3,9 +3,12 @@ import { RefObject, useEffect } from 'react';
 interface useInfiniteFetchProps<T> {
   targetRef: RefObject<T>;
   fetchCallback: () => void;
+  threshold: number;
 }
 
-export const useInfiniteFetch = <T extends HTMLElement>({ targetRef, fetchCallback }: useInfiniteFetchProps<T>) => {
+export const useInfiniteFetch = <T extends HTMLElement>(props: useInfiniteFetchProps<T>) => {
+  const { targetRef, fetchCallback, threshold } = props;
+
   useEffect(() => {
     if (targetRef.current == null) return;
 
@@ -15,12 +18,12 @@ export const useInfiniteFetch = <T extends HTMLElement>({ targetRef, fetchCallba
           fetchCallback();
         }
       },
-      { threshold: 1 },
+      { threshold },
     );
     observer.observe(targetRef.current);
 
     return () => observer.disconnect();
-  }, [fetchCallback, targetRef]);
+  }, [fetchCallback, targetRef, threshold]);
 
   return targetRef;
 };
