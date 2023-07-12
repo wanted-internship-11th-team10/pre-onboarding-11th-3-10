@@ -13,5 +13,14 @@ const client = axios.create({
 });
 const responseBody = (response: AxiosResponse) => response.data;
 
-export const getIssues = (page: number) =>
-  client.get(`/repos/facebook/react/issues?state=open&sort=comments&per_page=10&page=${page}`).then(responseBody);
+type getIssuesRequest = {
+  org: string;
+  repo: string;
+  page: number;
+  perPage?: number;
+};
+
+export const getIssues = ({ org, repo, page, perPage = 10 }: getIssuesRequest) =>
+  client
+    .get(`/repos/${org}/${repo}/issues?state=open&sort=comments&per_page=${perPage}&page=${page}`)
+    .then(responseBody);

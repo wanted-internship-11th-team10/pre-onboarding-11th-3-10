@@ -14,9 +14,10 @@ export const IssuesProvider = ({ children }: { children: ReactNode }) => {
 
   const fetchIssues = useCallback(async () => {
     setLoading(true);
+    const body = { org: 'facebook', repo: 'react', page };
 
     try {
-      const issues = await getIssues(page);
+      const issues = await getIssues(body);
       setIssues((prev) => [...prev, ...issues]);
       setPage((prev) => prev + 1);
     } catch (err) {
