@@ -14,7 +14,7 @@ function formatDate(date: string) {
   return dayjs(date).format('YYYY년 MM월 DD일');
 }
 
-export function IssueInfo({ issueNumber, title, author, created_at, comments }: IssueInfoProps) {
+export function IssueHeader({ issueNumber, title, author, created_at, comments }: IssueInfoProps) {
   return (
     <div>
       <Title>
