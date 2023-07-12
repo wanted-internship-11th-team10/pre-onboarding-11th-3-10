@@ -8,7 +8,7 @@ interface RowProps {
   onClick: () => void;
 }
 
-export const Row = ({ issue }: RowProps) => {
+export const Row = ({ issue, onClick }: RowProps) => {
   return (
     <div
       css={css`
@@ -17,7 +17,9 @@ export const Row = ({ issue }: RowProps) => {
         align-items: center;
         padding-bottom: 1rem;
         border-bottom: 1px solid black;
+        cursor: pointer;
       `}
+      onClick={onClick}
     >
       <div
         css={css`
