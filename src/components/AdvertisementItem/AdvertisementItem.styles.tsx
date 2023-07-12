@@ -6,6 +6,7 @@ export const AdvertisementItemWrapper = styled.div`
   align-items: center;
   margin-top: 2rem;
   background-color: white;
+  border-radius: 0.5rem;
 `;
 
 export const Advertisement = styled.a`
