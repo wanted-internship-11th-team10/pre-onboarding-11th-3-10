@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 
-const Loading = () => {
+const LoadingView = () => {
   return (
     <Content>
       Loading
@@ -47,4 +47,4 @@ const Content = styled.div`
     animation: Bounce 0.3s 0.2s;
   }
 `;
-export default Loading;
+export default LoadingView;

@@ -1,4 +1,4 @@
-import { AdBanner, Error, IssueItem, Loading } from '.';
+import { AdBanner, Error, IssueItem, LoadingView } from '.';
 import { useRef } from 'react';
 import { styled } from 'styled-components';
 
@@ -27,7 +27,7 @@ const IssueList = () => {
       {data && list}
       {error && <Error />}
       <div ref={setObservationTarget}></div>
-      {loading && <Loading />}
+      {loading && <LoadingView />}
     </ListBox>
   );
 };
