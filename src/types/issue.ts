@@ -1,3 +1,5 @@
+import { PropsWithChildren } from 'react';
+
 export interface Issue {
   id: number;
   state: string; // 이슈 상태
@@ -19,4 +21,6 @@ export interface IssueType {
   created_at: string; // 작성일
   comments: number; // 코멘트 수
   body: string; // 본문
+  repository_url: string; // 저장소 url
+  children: PropsWithChildren;
 }
