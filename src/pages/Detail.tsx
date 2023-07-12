@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { Fragment } from 'react';
+import ReactMarkdown from 'react-markdown';
 import { css } from '@emotion/react';
 
 import { Row } from '@/components';
@@ -22,6 +23,9 @@ export const Detail = () => {
         <img src={issue.user.avatar_url} alt="avatar" width="80px" height="80px" />
         <Row issue={issue} />
       </div>
+      <p>
+        <ReactMarkdown children={issue.body} />
+      </p>
     </Fragment>
   );
 };
