@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { Link } from 'react-router-dom';
 import { styled } from 'styled-components';
 
 interface ComponentProps {
@@ -8,7 +9,9 @@ const HeaderLayout = ({ children }: ComponentProps) => {
   return (
     <Layout>
       <Header>
-        <b>Facebook React</b>
+        <Link to="/">
+          <b>Facebook React</b>
+        </Link>
       </Header>
       {children}
     </Layout>
@@ -28,6 +31,10 @@ const Header = styled.div`
   display: block;
   text-align: center;
   margin: 50px 0;
+  a {
+    text-decoration: none;
+    color: #000;
+  }
   b {
     position: relative;
     font-size: 40px;
