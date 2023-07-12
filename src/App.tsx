@@ -1,8 +1,22 @@
-const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_TOKEN;
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-console.log('VITE .env 접근 테스트 :: GITHUB_TOKEN : ', GITHUB_TOKEN);
+import { IssuesProvider } from './context/issuesContext';
+import HeaderLayout from './layout/HeaderLayout';
+import { Detail, Issues } from './pages';
+
 function App() {
-  return <>React Vite: {GITHUB_TOKEN}</>;
+  return (
+    <BrowserRouter>
+      <IssuesProvider>
+        <HeaderLayout>
+          <Routes>
+            <Route path="/" element={<Issues />}></Route>
+            <Route path="/:id" element={<Detail />}></Route>
+          </Routes>
+        </HeaderLayout>
+      </IssuesProvider>
+    </BrowserRouter>
+  );
 }
 
 export default App;
