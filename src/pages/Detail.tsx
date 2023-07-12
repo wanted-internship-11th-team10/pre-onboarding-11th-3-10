@@ -4,7 +4,7 @@ import ReactMarkdown from 'react-markdown';
 import { css } from '@emotion/react';
 
 import { Row } from '@/components';
-import { useIssues } from '@/context/IssuesContext';
+import { useIssues } from '@/context';
 
 export const Detail = () => {
   const { selectedIssue: issue } = useIssues();
