@@ -17,7 +17,7 @@ export const useInfiniteFetch = <T extends HTMLElement>({ targetRef, fetchCallba
       },
       { threshold: 1 },
     );
-    observer.observe(targetRef?.current);
+    observer.observe(targetRef.current);
 
     return () => observer.disconnect();
   }, [fetchCallback, targetRef]);
