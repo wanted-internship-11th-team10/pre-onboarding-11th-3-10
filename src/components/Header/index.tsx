@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 
 import { IssueContext } from '@/context/IssueContext';
+import { HeaderContainer } from './style';
 
 function Header() {
   const { loading, issues } = useContext(IssueContext);
@@ -20,15 +21,15 @@ function Header() {
   }, [issues]);
 
   return (
-    <>
+    <HeaderContainer>
       {loading ? (
         ''
       ) : (
-        <div>
+        <>
           {header.organizationName} / {header.repositoryName}
-        </div>
+        </>
       )}
-    </>
+    </HeaderContainer>
   );
 }
 
