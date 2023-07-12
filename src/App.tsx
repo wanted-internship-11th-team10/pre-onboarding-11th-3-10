@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { css } from '@emotion/react';
 
 import { getIssues } from './api';
+import { Row } from './components';
 import { Issue } from './model';
 
 function App() {
@@ -28,11 +29,13 @@ function App() {
         margin: 20px auto 0;
         padding: 1rem;
         border: 2px solid black;
-        background-color: gold;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
       `}
     >
       {issues.map((issue, idx) => (
-        <div key={idx}>{issue.user.login}</div>
+        <Row key={idx} issue={issue} />
       ))}
     </div>
   );

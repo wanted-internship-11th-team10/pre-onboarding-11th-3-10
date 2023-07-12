@@ -18,4 +18,4 @@ type getIssusesRequest = {
   repo: string;
 };
 export const getIssues = ({ user, repo }: getIssusesRequest) =>
-  client.get(`/repos/${user}/${repo}/issues?state=open`).then(responseBody);
+  client.get(`/repos/${user}/${repo}/issues?state=open&sort=comments`).then(responseBody);
