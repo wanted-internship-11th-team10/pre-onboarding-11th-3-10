@@ -5,6 +5,7 @@ import Error from '@/components/Error';
 import IssueMarkDownViewer from '@/components/IssueMarkDownViewer';
 import { IssueContext } from '@/context/IssueContext';
 import { Issue } from '@/types/issue';
+import { BottomBox, IssueContainer, IssueTitleContainer, LeftBox, ProfileImgBox, RightBox, TopBox } from './style';
 
 function IssueDetail() {
   const { id } = useParams();
@@ -28,19 +29,31 @@ function IssueDetail() {
   }
 
   return (
-    <>
+    <IssueContainer>
       {selectedIssue && (
         <>
-          <div>이슈번호 {selectedIssue.number}</div>
-          <div>이슈제목 {selectedIssue.title}</div>
-          <div>작성자 {selectedIssue.user.login}</div>
-          <div>작성일 {selectedIssue.created_at}</div>
-          <div>코멘트 수 {selectedIssue.comments}</div>
-          <div>작성자 프로필 이미지 {selectedIssue.user.avatar_url}</div>
+          <IssueTitleContainer>
+            <ProfileImgBox>
+              <img src={selectedIssue.user.avatar_url} alt="프로필" width="50" height="50" />
+            </ProfileImgBox>
+            <div>
+              <LeftBox>
+                <TopBox>
+                  <div>#{selectedIssue.number}</div>
+                  <div>{selectedIssue.title}</div>
+                </TopBox>
+                <BottomBox>
+                  <div>작성자: {selectedIssue.user.login},</div>
+                  <div>작성일: {selectedIssue.created_at.slice(0, 10)}</div>
+                </BottomBox>
+              </LeftBox>
+              <RightBox>코멘트 {selectedIssue.comments}</RightBox>
+            </div>
+          </IssueTitleContainer>
           <IssueMarkDownViewer content={selectedIssue.body} />
         </>
       )}
-    </>
+    </IssueContainer>
   );
 }
 
