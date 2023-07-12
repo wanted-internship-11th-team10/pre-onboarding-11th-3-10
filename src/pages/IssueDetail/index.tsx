@@ -21,6 +21,8 @@ function IssueDetail() {
     return <div>게시글을 찾을 수 없습니다.</div>;
   }
 
+  console.log(selectedIssue);
+
   return (
     <>
       <div>이슈번호 {selectedIssue.number}</div>
