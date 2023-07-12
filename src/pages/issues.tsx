@@ -2,8 +2,8 @@ import { useRef } from 'react';
 import { styled } from 'styled-components';
 
 import { getIssues } from '@/api/issues';
-import { Error, LoadingView } from '@/components';
-import IssueList from '@/components/IssueList';
+import { Error, LoadingView } from '@/components/common';
+import { IssueList } from '@/components/issues';
 import { useIssuesDispatch, useIssuesState } from '@/context/issuesContext';
 import { useIntersectionObserver } from '@/hook/observer';
 

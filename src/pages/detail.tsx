@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { getDetail } from '@/api/detail';
-import { Error, LoadingView } from '@/components';
-import DetailBox from '@/components/DetailBox';
+import { Error, LoadingView } from '@/components/common';
+import DetailBox from '@/components/detail/DetailBox';
 
 const Detail = () => {
   const { id } = useParams();

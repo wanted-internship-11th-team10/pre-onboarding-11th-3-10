@@ -1,4 +1,5 @@
-import { AdBanner, IssueItem } from '.';
+import IssueItem from './IssueItem';
+import { AdBanner } from '../common';
 
 interface IssueListProps {
   data: IssueType[];
