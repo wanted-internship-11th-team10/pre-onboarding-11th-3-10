@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { css } from '@emotion/react';
 
 import { getIssues } from './api';
-import { Row } from './components';
+import { Header, Row } from './components';
 import { Issue } from './model';
 
 function App() {
@@ -23,21 +23,27 @@ function App() {
   }, []);
 
   return (
-    <div
+    <main
       css={css`
         width: 500px;
-        margin: 20px auto 0;
+        margin: 1.25rem auto 0;
         padding: 1rem;
         border: 2px solid black;
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
       `}
     >
-      {issues.map((issue, idx) => (
-        <Row key={idx} issue={issue} />
-      ))}
-    </div>
+      <Header org="facebook" repo="react" />
+      <div
+        css={css`
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+        `}
+      >
+        {issues.map((issue, idx) => (
+          <Row key={idx} issue={issue} />
+        ))}
+      </div>
+    </main>
   );
 }
 

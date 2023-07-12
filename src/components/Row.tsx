@@ -23,13 +23,13 @@ export const Row = ({ issue }: RowProps) => {
           flex-basis: 80%;
           display: flex;
           flex-direction: column;
-          gap: 4px;
+          gap: 0.25rem;
         `}
       >
         <span>{`#${issue.number} ${issue.title}`}</span>
         <span
           css={css`
-            font-size: 14px;
+            font-size: 0.9rem;
             color: gray;
           `}
         >
