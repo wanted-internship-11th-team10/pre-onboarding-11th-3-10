@@ -10,42 +10,37 @@ interface RowProps {
 
 export const Row = ({ issue, onClick }: RowProps) => {
   return (
-    <div
-      css={css`
-        display: flex;
-        align-items: center;
-        gap: 2rem;
-        padding-bottom: 1rem;
-        border-bottom: 1px solid black;
-        cursor: pointer;
-      `}
-      onClick={onClick}
-    >
-      <div
-        css={css`
-          flex-basis: 80%;
-          display: flex;
-          flex-direction: column;
-          gap: 0.25rem;
-        `}
-      >
+    <div css={rowContainer} onClick={onClick}>
+      <div css={rowTitle}>
         <span>{`#${issue.number} ${issue.title}`}</span>
-        <span
-          css={css`
-            font-size: 0.9rem;
-            color: gray;
-          `}
-        >
-          {`작성자: ${issue.user.login}, 작성일: ${issue.created_at}`}
-        </span>
+        <span css={rowDesc}>{`작성자: ${issue.user.login}, 작성일: ${issue.created_at}`}</span>
       </div>
-      <span
-        css={css`
-          font-size: 0.8rem;
-        `}
-      >
-        코멘트: {issue.comments}
-      </span>
+      <span css={rowComment}>코멘트: {issue.comments}</span>
     </div>
   );
 };
+
+const rowContainer = css`
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid black;
+  cursor: pointer;
+`;
+
+const rowTitle = css`
+  flex-basis: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+`;
+
+const rowDesc = css`
+  font-size: 0.9rem;
+  color: gray;
+`;
+
+const rowComment = css`
+  font-size: 0.8rem;
+`;

@@ -26,13 +26,7 @@ const Home = () => {
 
   return (
     <Fragment>
-      <div
-        css={css`
-          display: flex;
-          flex-direction: column;
-          gap: 1rem;
-        `}
-      >
+      <div css={issuesContainer}>
         {issues.map((issue, idx) => {
           return (
             <Fragment key={idx}>
@@ -41,16 +35,22 @@ const Home = () => {
             </Fragment>
           );
         })}
-        <div
-          css={css`
-            text-align: center;
-          `}
-        >
-          {loading ? <div>loading...</div> : <div ref={pageEnd}>더 보기...</div>}
-        </div>
+        <div css={footer}>{loading ? <div>loading...</div> : <div ref={pageEnd}>더 보기...</div>}</div>
       </div>
     </Fragment>
   );
 };
+
+const issuesContainer = css`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
+
+const footer = css`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
 
 export default Home;

@@ -6,15 +6,15 @@ import { Header } from './Header';
 
 export const Layout = ({ children }: { children: ReactNode }) => {
   return (
-    <main
-      css={css`
-        max-width: 700px;
-        margin: 0 auto;
-        padding: 1rem;
-      `}
-    >
+    <main css={main}>
       <Header org="facebook" repo="react" />
       {children}
     </main>
   );
 };
+
+const main = css`
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 1rem;
+`;
