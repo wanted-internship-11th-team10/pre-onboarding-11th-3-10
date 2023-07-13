@@ -1,4 +1,5 @@
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { styled } from 'styled-components';
 
 import { IssueData } from '@/api/issue';
@@ -33,7 +34,9 @@ export function Issue() {
             />
           </Container>
           <BodyContainer>
-            <ReactMarkdown className={style.reactMarkDown}>{issue.body ?? ''}</ReactMarkdown>
+            <ReactMarkdown className={style.reactMarkDown} remarkPlugins={[remarkGfm]}>
+              {issue.body ?? ''}
+            </ReactMarkdown>
           </BodyContainer>
         </ScrollTop>
       )}
