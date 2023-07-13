@@ -15,7 +15,7 @@ export function IssueList() {
     <>
       <Issues issues={issues} />
       <Target ref={ref} />
-      {isLoading && <Loading />}
+      {isLoading && <Loading isFullWidth />}
     </>
   );
 }
