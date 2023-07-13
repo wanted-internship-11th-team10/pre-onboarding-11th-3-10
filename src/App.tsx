@@ -1,8 +1,28 @@
-const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_TOKEN;
 
-console.log('VITE .env 접근 테스트 :: GITHUB_TOKEN : ', GITHUB_TOKEN);
-function App() {
-  return <>React Vite: {GITHUB_TOKEN}</>;
+import { Outlet } from 'react-router-dom';
+import { styled } from 'styled-components';
+
+import Header from './components/Header';
+import { IssueProvider } from './context/IssueContext';
+
+export default function App() {
+  return (
+    <AppContainer>
+      <IssueProvider>
+        <Header />
+        <Outlet/>
+      </IssueProvider>
+    </AppContainer>
+  );
 }
 
-export default App;
+const AppContainer = styled.main`
+  width: 1018px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid black;
+  overflow: scroll;
+`
