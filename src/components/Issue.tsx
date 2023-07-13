@@ -2,7 +2,7 @@ import ReactMarkdown from 'react-markdown';
 import { styled } from 'styled-components';
 
 import { IssueData } from '@/api/issue';
-import { useFetchIssue } from '@/hook/useFetchIssue';
+import { useFetchIssue } from '@/hook';
 import style from '@/style/markdown-styles.module.css';
 import { IssueBanner } from './IssueBanner';
 
@@ -31,7 +31,7 @@ export function Issue() {
             />
           </Container>
           <BodyContainer>
-            <ReactMarkdown className={style.reactMarkDown}>{issue?.body ?? ''}</ReactMarkdown>
+            <ReactMarkdown className={style.reactMarkDown}>{issue.body ?? ''}</ReactMarkdown>
           </BodyContainer>
         </>
       )}

@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import { useFetchIssues } from '@/hook/useFetchIssues';
+import { useFetchIssues } from '@/hook';
 import { IssueContext } from './IssueContext';
 
 export function IssueProvider({ children }: { children: ReactNode }) {

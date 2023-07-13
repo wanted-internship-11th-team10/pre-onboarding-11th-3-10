@@ -1,7 +1,7 @@
 import { styled } from 'styled-components';
 
 import { useIssueContext } from '@/context/useIssueContext';
-import { useInfiniteScroll } from '@/hook/useInfiniteScroll';
+import { useInfiniteScroll } from '@/hook';
 import { Loading } from './common/Loading';
 import { Issues } from './Issues';
 
