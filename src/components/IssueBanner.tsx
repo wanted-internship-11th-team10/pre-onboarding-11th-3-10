@@ -1,4 +1,3 @@
-import dayjs from 'dayjs';
 import { GoComment } from 'react-icons/go';
 import styled from 'styled-components';
 
@@ -10,8 +9,11 @@ interface IssueInfoProps {
   comments: number;
 }
 
-function formatDate(date: string) {
-  return dayjs(date).format('YYYY년 MM월 DD일');
+function formatDate(dateString: string) {
+  const date = new Date(dateString);
+  const formatted = `${date.getFullYear()}년 ${date.getMonth()}월 ${date.getDate()}일`;
+
+  return formatted;
 }
 
 export function IssueBanner({ issueNumber, title, author, created_at, comments }: IssueInfoProps) {
