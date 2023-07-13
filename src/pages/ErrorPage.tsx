@@ -4,21 +4,21 @@ import { styled } from 'styled-components';
 export function ErrorPage() {
   const navigate = useNavigate();
 
-  const handleClickBack = () => navigate(-1);
+  const handleClickBack = () => navigate('/issues');
 
   return (
     <Container>
       <ErrorMessage>
-        <h1>404</h1>
-        Not Found
+        <h1>Oops!</h1>
+        There's something wrong
       </ErrorMessage>
-      <BackButton onClick={handleClickBack}>이전으로</BackButton>
+      <BackButton onClick={handleClickBack}>이슈 목록으로</BackButton>
     </Container>
   );
 }
 
 const Container = styled.div`
-  width: 300px;
+  width: 400px;
   margin: auto;
   text-align: center;
   position: absolute;
