@@ -1,8 +1,12 @@
-const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_TOKEN;
+import { IssueProvider } from './context/IssueProvider';
+import Router from './router';
 
-console.log('VITE .env 접근 테스트 :: GITHUB_TOKEN : ', GITHUB_TOKEN);
 function App() {
-  return <>React Vite: {GITHUB_TOKEN}</>;
+  return (
+    <IssueProvider>
+      <Router />
+    </IssueProvider>
+  );
 }
 
 export default App;
