@@ -9,13 +9,6 @@ interface IssueInfoProps {
   comments: number;
 }
 
-function formatDate(dateString: string) {
-  const date = new Date(dateString);
-  const formatted = `${date.getFullYear()}년 ${date.getMonth()}월 ${date.getDate()}일`;
-
-  return formatted;
-}
-
 export function IssueBanner({ issueNumber, title, author, created_at, comments }: IssueInfoProps) {
   return (
     <div>
@@ -36,6 +29,13 @@ export function IssueBanner({ issueNumber, title, author, created_at, comments }
       </Detail>
     </div>
   );
+}
+
+function formatDate(dateString: string) {
+  const date = new Date(dateString);
+  const formatted = `${date.getFullYear()}년 ${date.getMonth()}월 ${date.getDate()}일`;
+
+  return formatted;
 }
 
 const Title = styled.div`
