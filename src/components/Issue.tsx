@@ -4,6 +4,7 @@ import { styled } from 'styled-components';
 import { IssueData } from '@/api/issue';
 import { useFetchIssue } from '@/hook';
 import style from '@/style/markdown-styles.module.css';
+import { ScrollTop } from './common/ScrollTop';
 import { IssueBanner } from './IssueBanner';
 
 function isIssueDataType(object: object | undefined): object is IssueData {
@@ -18,7 +19,7 @@ export function Issue() {
   return (
     <div>
       {isIssueDataType(issue) && (
-        <>
+        <ScrollTop>
           <Container>
             <ImgWrapper>
               <img src={issue.user?.avatar_url} />
@@ -34,7 +35,7 @@ export function Issue() {
           <BodyContainer>
             <ReactMarkdown className={style.reactMarkDown}>{issue.body ?? ''}</ReactMarkdown>
           </BodyContainer>
-        </>
+        </ScrollTop>
       )}
     </div>
   );
