@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom';
 import { getIssue } from '@/apis';
 import { IssueItem } from '@/components/IssueItem';
 import { Avatar } from '@/components/ui/Avatar';
-import { LoadingSpinner } from '@/components/ui/LoadingSpinner';
 import { useIssue } from '@/context/issue/useIssue.tsx';
 import { useFetch } from '@/hooks/useFetch.ts';
 import * as S from './IssueDetailPage.styles.tsx';
@@ -12,12 +11,13 @@ import * as S from './IssueDetailPage.styles.tsx';
 export function IssueDetailPage() {
   const params = useParams<{ id: string }>();
   const { owner, repository } = useIssue();
-  const { data: issue, isLoading } = useFetch(() => getIssue(owner, repository, params.id!), {
+
+  const { data: issue } = useFetch(() => getIssue(owner, repository, params.id!), {
     queryKey: `issues/${owner}/${repository}/${params.id}`,
-    useErrorBoundary: true,
+    suspense: true,
   });
 
-  if (isLoading || !issue) return <LoadingSpinner isLoading isFullWidth />;
+  if (!issue) return null;
 
   const { user, body } = issue;
   return (

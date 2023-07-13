@@ -14,24 +14,15 @@ export function IssuePage() {
     onNextFetch,
   } = useInfiniteFetch<Issue>((pageIndex, perPage) => getIssues(owner, repository, pageIndex, perPage), {
     queryKey: `issue/${owner}/${repository}`,
-    perPage: 5,
-    // useErrorBoundary: true,
+    perPage: 10,
   });
 
-  // GYU-TODO: 어떤 방법이 더 좋을까?
   const { ref: inViewRef, inView } = useInView<HTMLDivElement>({
-    // 방법1
     onInView: () => {
       if (!inView || isLoading || error) return;
       onNextFetch();
     },
   });
-
-  // 방법2
-  // useEffect(() => {
-  //   if (!inView || isLoading) return;
-  //   onNextFetch();
-  // }, [inView, isLoading]);
 
   return (
     <main>
