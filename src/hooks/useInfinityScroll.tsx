@@ -9,6 +9,7 @@ type useInfinityScrollType = {
 };
 
 function useInfinityScroll({ issues, setPage, scrollAnchor }: useInfinityScrollType) {
+  // 이전 스크롤 위치 가져오기
   useEffect(() => {
     const scrollPosition = Number(sessionStorage.getItem('scrollY'));
 
@@ -19,11 +20,7 @@ function useInfinityScroll({ issues, setPage, scrollAnchor }: useInfinityScrollT
   }, [issues]);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      sessionStorage.setItem('scrollY', String(currentScrollY));
-    };
-
+    // 1. observer 활성화
     const handleObserver = (entries: IntersectionObserverEntry[]) => {
       const target = entries[0];
       if (target.isIntersecting) {
@@ -38,6 +35,12 @@ function useInfinityScroll({ issues, setPage, scrollAnchor }: useInfinityScrollT
     if (scrollAnchor.current) {
       observer.observe(scrollAnchor.current);
     }
+
+    // 2. scroll 위치 저장
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      sessionStorage.setItem('scrollY', String(currentScrollY));
+    };
 
     window.addEventListener('scroll', handleScroll);
 
