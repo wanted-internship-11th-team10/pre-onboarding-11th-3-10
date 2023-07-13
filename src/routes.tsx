@@ -30,5 +30,6 @@ export const router = createBrowserRouter([
   {
     path: '/',
     element: <Navigate to="/issues" replace />,
+    errorElement: <ErrorPage />,
   },
 ]);
