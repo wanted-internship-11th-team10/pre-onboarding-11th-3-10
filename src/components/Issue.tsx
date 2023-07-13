@@ -14,6 +14,7 @@ function isIssueDataType(object: object | undefined): object is IssueData {
 export function Issue() {
   const issue = useFetchIssue();
 
+  if (!issue) return;
   return (
     <div>
       {isIssueDataType(issue) && (

@@ -20,7 +20,7 @@ export const router = createBrowserRouter([
       {
         path: ':number',
         element: (
-          <Suspense fallback={<Loading />}>
+          <Suspense fallback={<Loading isFullWidth />}>
             <Issue />
           </Suspense>
         ),
