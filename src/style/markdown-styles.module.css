@@ -1,0 +1,17 @@
+.reactMarkDown img {
+  width: 100%;
+}
+
+.reactMarkDown pre {
+  background-color: rgb(104, 104, 104);
+  color: white;
+  padding: 30px;
+  border-radius: 5px;
+}
+
+.reactMarkDown pre code {
+  /* white-space: pre-wrap; */
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+}

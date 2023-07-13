@@ -1,8 +1,15 @@
-const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_TOKEN;
+import { RouterProvider } from 'react-router-dom';
 
-console.log('VITE .env 접근 테스트 :: GITHUB_TOKEN : ', GITHUB_TOKEN);
+import { Global } from './Global';
+import { router } from './routes';
+
 function App() {
-  return <>React Vite: {GITHUB_TOKEN}</>;
+  return (
+    <>
+      <Global />
+      <RouterProvider router={router} />
+    </>
+  );
 }
 
 export default App;
