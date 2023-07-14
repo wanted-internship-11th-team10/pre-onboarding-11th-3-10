@@ -11,7 +11,7 @@
     <a href="https://github.com/wanted-internship-11th-team10/pre-onboarding-11th-3-10/wiki"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="">View Demo</a>
+    <a href="https://wanted-github-issue.netlify.app/">View Demo</a>
     ·
     <a href="https://lean-mahogany-686.notion.site/Team-10-d4eeb6514bc645b8a02de96af3152dca">Notion</a>
   </p>
@@ -20,8 +20,8 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 <div>
-    <img src="" width='500'>
-    <img src="" width="500">
+    <img src="https://github.com/wanted-internship-11th-team10/pre-onboarding-11th-3-10/assets/117281717/0da4ebbe-fba1-4373-b630-c423457a1268" width='500'>
+    <img src="https://github.com/wanted-internship-11th-team10/pre-onboarding-11th-3-10/assets/117281717/f58b810d-fb30-4076-9413-79347e2c8741" width="500">
 </div>
 
 ### Built With
@@ -33,7 +33,7 @@
 * ![styledcomponents][styledcomponents]
 
 ### Link
-<a href="">Best Practice</a>
+<a href="https://wanted-github-issue.netlify.app/">Best Practice</a>
 
 ### Folder Distructure
 <img width="296" alt="스크린샷 2023-07-13 오후 11 27 28" src="https://github.com/wanted-internship-11th-team10/pre-onboarding-11th-3-10/assets/117281717/237fb6cf-c562-409d-9bab-f6a496759d77">
@@ -82,6 +82,8 @@ chore : 빌드 업무 수정, 패키지 매니저 수정
 - <a href="https://github.com/wanted-internship-11th-team10/pre-onboarding-11th-3-10/wiki/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%A1%9C%EB%94%A9-%EA%B4%80%EB%A0%A8-Best-Practice">데이터 로딩 관련 Best Practice</a>
 
 - <a href="https://github.com/wanted-internship-11th-team10/pre-onboarding-11th-3-10/wiki/%EB%AC%B4%ED%95%9C-%EC%8A%A4%ED%81%AC%EB%A1%A4-Best-Practice">무한 스크롤 Best Practice</a>
+
+- <a href="https://github.com/wanted-internship-11th-team10/pre-onboarding-11th-3-10/wiki/%EC%9D%B4%EC%8A%88-%EB%AA%A9%EB%A1%9D%ED%8E%98%EC%9D%B4%EC%A7%80-Best-Practice">이슈 목록 페이지 Best Practice</a>
 
 - <a href="https://github.com/wanted-internship-11th-team10/pre-onboarding-11th-3-10/wiki/%EC%9D%B4%EC%8A%88-%EC%83%81%EC%84%B8%ED%8E%98%EC%9D%B4%EC%A7%80-Best-Practice">이슈 상세 페이지 Best Practice</a>
 
