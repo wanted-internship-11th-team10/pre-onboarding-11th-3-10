@@ -41,10 +41,10 @@
 <!-- GETTING STARTED -->
 ## Getting Started
 
-### Installation
+### Installation and start
 ```
 $ npm ci
-$ npm run dev
+$ npm start
 ```
 
 ### Branch Strategy
